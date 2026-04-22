@@ -1,0 +1,10 @@
+{
+  "id": "codexian",
+  "name": "Codexian",
+  "version": "0.1.0",
+  "minAppVersion": "1.4.5",
+  "description": "Embeds the local Codex CLI as an AI coding agent in your Obsidian vault, with chat, file edits, search, terminal workflows, skills, subagents, MCP context, and inline note editing.",
+  "author": "zypher1225",
+  "authorUrl": "https://github.com/zypher1225",
+  "isDesktopOnly": true
+}
