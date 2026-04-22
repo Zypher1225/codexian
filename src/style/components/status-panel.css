@@ -1,21 +1,21 @@
 /* Status Panel - persistent bottom panel for todos and command output */
 
-.codexian-status-panel-container {
+.claudian-status-panel-container {
   flex-shrink: 0;
   padding: 0 14px;
 }
 
-.codexian-status-panel {
+.claudian-status-panel {
   padding-top: 12px;
 }
 
 /* Todo Section */
 
-.codexian-status-panel-todos {
+.claudian-status-panel-todos {
   margin-top: 4px;
 }
 
-.codexian-status-panel-header {
+.claudian-status-panel-header {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -26,35 +26,35 @@
   overflow: hidden;
 }
 
-.codexian-status-panel-header:hover {
+.claudian-status-panel-header:hover {
   background: var(--background-modifier-hover);
 }
 
-.codexian-status-panel-header:focus-visible {
+.claudian-status-panel-header:focus-visible {
   outline: 2px solid var(--interactive-accent);
   outline-offset: 2px;
 }
 
-.codexian-status-panel-icon {
+.claudian-status-panel-icon {
   display: flex;
   align-items: center;
   color: var(--text-accent);
   flex-shrink: 0;
 }
 
-.codexian-status-panel-icon svg {
+.claudian-status-panel-icon svg {
   width: 16px;
   height: 16px;
 }
 
-.codexian-status-panel-label {
+.claudian-status-panel-label {
   font-family: var(--font-monospace);
   font-size: 13px;
   font-weight: 500;
   color: var(--text-normal);
 }
 
-.codexian-status-panel-current {
+.claudian-status-panel-current {
   flex: 1;
   font-family: var(--font-monospace);
   font-size: 13px;
@@ -64,44 +64,44 @@
   white-space: nowrap;
 }
 
-.codexian-status-panel-status {
+.claudian-status-panel-status {
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
 
-.codexian-status-panel-status svg {
+.claudian-status-panel-status svg {
   width: 14px;
   height: 14px;
 }
 
-.codexian-status-panel-status.status-completed {
+.claudian-status-panel-status.status-completed {
   color: var(--color-green);
 }
 
-.codexian-status-panel-content {
+.claudian-status-panel-content {
   padding: 2px 0;
 }
 
-/* Individual todo item - shared by status panel and inline tool via .codexian-todo-list-container */
-.codexian-todo-list-container .codexian-todo-item {
+/* Individual todo item - shared by status panel and inline tool via .claudian-todo-list-container */
+.claudian-todo-list-container .claudian-todo-item {
   display: flex;
   align-items: flex-start;
   padding: 1px 0;
 }
 
-.codexian-todo-list-container .codexian-todo-status-icon {
+.claudian-todo-list-container .claudian-todo-status-icon {
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
 
-.codexian-todo-list-container .codexian-todo-status-icon svg {
+.claudian-todo-list-container .claudian-todo-status-icon svg {
   width: 12px;
   height: 12px;
 }
 
-.codexian-todo-list-container .codexian-todo-text {
+.claudian-todo-list-container .claudian-todo-text {
   font-family: var(--font-monospace);
   font-size: 12px;
   line-height: 1.4;
@@ -109,55 +109,55 @@
   padding-left: 12px;
 }
 
-.codexian-todo-list-container .codexian-todo-pending .codexian-todo-status-icon {
+.claudian-todo-list-container .claudian-todo-pending .claudian-todo-status-icon {
   color: var(--text-normal);
 }
 
-.codexian-todo-list-container .codexian-todo-pending .codexian-todo-status-icon svg {
+.claudian-todo-list-container .claudian-todo-pending .claudian-todo-status-icon svg {
   transform: scale(2);
 }
 
-.codexian-todo-list-container .codexian-todo-pending .codexian-todo-text {
+.claudian-todo-list-container .claudian-todo-pending .claudian-todo-text {
   color: var(--text-normal);
 }
 
-.codexian-todo-list-container .codexian-todo-in_progress .codexian-todo-status-icon {
+.claudian-todo-list-container .claudian-todo-in_progress .claudian-todo-status-icon {
   color: var(--interactive-accent);
 }
 
-.codexian-todo-list-container .codexian-todo-in_progress .codexian-todo-status-icon svg {
+.claudian-todo-list-container .claudian-todo-in_progress .claudian-todo-status-icon svg {
   transform: scale(2);
 }
 
-.codexian-todo-list-container .codexian-todo-in_progress .codexian-todo-text {
+.claudian-todo-list-container .claudian-todo-in_progress .claudian-todo-text {
   color: var(--text-normal);
 }
 
-.codexian-todo-list-container .codexian-todo-completed .codexian-todo-status-icon {
+.claudian-todo-list-container .claudian-todo-completed .claudian-todo-status-icon {
   color: var(--color-green);
 }
 
-.codexian-todo-list-container .codexian-todo-completed .codexian-todo-text {
+.claudian-todo-list-container .claudian-todo-completed .claudian-todo-text {
   color: var(--text-muted);
 }
 
 /* Bash Output Section */
 
-.codexian-status-panel-bash {
+.claudian-status-panel-bash {
   margin-bottom: 4px;
 }
 
-.codexian-status-panel-bash-header {
+.claudian-status-panel-bash-header {
   padding: 4px 0;
 }
 
-.codexian-status-panel-bash-actions {
+.claudian-status-panel-bash-actions {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.codexian-status-panel-bash-action {
+.claudian-status-panel-bash-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -167,12 +167,12 @@
   color: var(--text-muted);
 }
 
-.codexian-status-panel-bash-action:hover {
+.claudian-status-panel-bash-action:hover {
   background: var(--background-modifier-hover);
   color: var(--text-normal);
 }
 
-.codexian-status-panel-bash-content {
+.claudian-status-panel-bash-content {
   padding-top: 2px;
   max-height: 320px;
   max-height: min(40vh, 320px);
@@ -180,23 +180,23 @@
   overscroll-behavior: contain;
 }
 
-.codexian-status-panel-bash-entry {
+.claudian-status-panel-bash-entry {
   margin: 4px 0;
 }
 
-.codexian-status-panel-bash-entry .codexian-tool-icon svg {
+.claudian-status-panel-bash-entry .claudian-tool-icon svg {
   width: 14px;
   height: 14px;
   position: relative;
   top: -1px;
 }
 
-.codexian-status-panel-bash-entry .codexian-tool-call {
+.claudian-status-panel-bash-entry .claudian-tool-call {
   margin: 0;
 }
 
 /* Keep bash output blocks from growing without bound */
-.codexian-status-panel-bash-entry .codexian-tool-result-text {
+.claudian-status-panel-bash-entry .claudian-tool-result-text {
   max-height: 200px;
   overflow-y: auto;
   word-break: break-word;

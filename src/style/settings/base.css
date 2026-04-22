@@ -1,13 +1,13 @@
 /* ── Settings tab navigation ── */
 
-.codexian-settings-tabs {
+.claudian-settings-tabs {
   display: flex;
   gap: 2px;
   border-bottom: 1px solid var(--background-modifier-border);
   margin-bottom: 16px;
 }
 
-.codexian-settings-tab {
+.claudian-settings-tab {
   padding: 8px 16px;
   border: none;
   background: transparent;
@@ -20,25 +20,25 @@
   margin-bottom: -1px;
 }
 
-.codexian-settings-tab:hover {
+.claudian-settings-tab:hover {
   color: var(--text-normal);
 }
 
-.codexian-settings-tab--active {
+.claudian-settings-tab--active {
   color: var(--text-normal);
   border-bottom-color: var(--interactive-accent);
 }
 
-.codexian-settings-tab-content {
+.claudian-settings-tab-content {
   display: none;
 }
 
-.codexian-settings-tab-content--active {
+.claudian-settings-tab-content--active {
   display: block;
 }
 
 /* Codex placeholder */
-.codexian-settings-codex-placeholder {
+.claudian-settings-codex-placeholder {
   padding: 40px 20px;
   text-align: center;
   color: var(--text-muted);
@@ -46,39 +46,39 @@
 }
 
 /* Settings page - remove separator lines from setting items */
-.codexian-settings .setting-item {
+.claudian-settings .setting-item {
   border-top: none;
 }
 
 /* Settings section headings (via setHeading()) */
-.codexian-settings .setting-item-heading {
+.claudian-settings .setting-item-heading {
   padding-top: 18px;
   margin-top: 12px;
   border-top: 1px solid var(--background-modifier-border);
 }
 
-.codexian-settings .setting-item-heading:first-child {
+.claudian-settings .setting-item-heading:first-child {
   padding-top: 0;
   margin-top: 0;
   border-top: none;
 }
 
-.codexian-settings .setting-item-heading .setting-item-name {
+.claudian-settings .setting-item-heading .setting-item-name {
   font-size: var(--font-ui-medium);
   font-weight: var(--font-semibold);
   color: var(--text-normal);
 }
 
 /* Custom section descriptions - align with items */
-.codexian-sp-settings-desc,
-.codexian-mcp-settings-desc,
-.codexian-plugin-settings-desc,
-.codexian-approved-desc {
+.claudian-sp-settings-desc,
+.claudian-mcp-settings-desc,
+.claudian-plugin-settings-desc,
+.claudian-approved-desc {
   padding: 0 12px;
 }
 
 /* Unified icon action buttons for settings */
-.codexian-settings-action-btn {
+.claudian-settings-action-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,29 +93,29 @@
   transition: background 0.15s ease, color 0.15s ease;
 }
 
-.codexian-settings-action-btn:hover {
+.claudian-settings-action-btn:hover {
   background: var(--background-modifier-hover);
   color: var(--text-normal);
 }
 
-.codexian-settings-action-btn svg {
+.claudian-settings-action-btn svg {
   width: 14px;
   height: 14px;
 }
 
-.codexian-settings-delete-btn:hover {
+.claudian-settings-delete-btn:hover {
   color: var(--text-error);
 }
 
 /* Hotkey grid - 3 columns */
-.codexian-hotkey-grid {
+.claudian-hotkey-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px 12px;
   padding: 4px 0;
 }
 
-.codexian-hotkey-item {
+.claudian-hotkey-item {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -124,17 +124,17 @@
   border-radius: 6px;
 }
 
-.codexian-hotkey-item:hover {
+.claudian-hotkey-item:hover {
   background: var(--background-modifier-hover);
 }
 
-.codexian-hotkey-name {
+.claudian-hotkey-name {
   flex: 1;
   color: var(--text-normal);
   font-size: var(--font-ui-small);
 }
 
-.codexian-hotkey-badge {
+.claudian-hotkey-badge {
   color: var(--text-muted);
   font-size: var(--font-ui-smaller);
   background: var(--background-modifier-hover);
@@ -144,13 +144,13 @@
 }
 
 /* Media folder input width */
-.codexian-settings-media-input {
+.claudian-settings-media-input {
   width: 200px;
 }
 
 /* ── Shared settings panel layout (used by slash-settings + agent-settings) ── */
 
-.codexian-sp-header {
+.claudian-sp-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -158,18 +158,18 @@
   padding: 0 12px;
 }
 
-.codexian-sp-label {
+.claudian-sp-label {
   font-size: var(--font-ui-small);
   color: var(--text-muted);
   font-weight: var(--font-medium);
 }
 
-.codexian-sp-header-actions {
+.claudian-sp-header-actions {
   display: flex;
   gap: 4px;
 }
 
-.codexian-sp-empty-state {
+.claudian-sp-empty-state {
   padding: 20px;
   text-align: center;
   color: var(--text-muted);
@@ -178,14 +178,14 @@
   margin-top: 8px;
 }
 
-.codexian-sp-list {
+.claudian-sp-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-top: 8px;
 }
 
-.codexian-sp-item {
+.claudian-sp-item {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -194,48 +194,48 @@
   border-radius: 6px;
 }
 
-.codexian-sp-item:hover {
+.claudian-sp-item:hover {
   background: var(--background-modifier-hover);
 }
 
-.codexian-sp-info {
+.claudian-sp-info {
   flex: 1;
   min-width: 0;
 }
 
-.codexian-sp-item-header {
+.claudian-sp-item-header {
   display: flex;
   align-items: baseline;
   gap: 8px;
 }
 
-.codexian-sp-item-name {
+.claudian-sp-item-name {
   font-weight: 600;
   font-family: var(--font-monospace);
   color: var(--text-normal);
 }
 
-.codexian-sp-item-desc {
+.claudian-sp-item-desc {
   font-size: 13px;
   color: var(--text-muted);
   margin-top: 2px;
 }
 
-.codexian-sp-item-actions {
+.claudian-sp-item-actions {
   display: flex;
   gap: 4px;
   margin-left: 16px;
   flex-shrink: 0;
 }
 
-.codexian-sp-advanced-section {
+.claudian-sp-advanced-section {
   border: 1px solid var(--background-modifier-border);
   border-radius: 6px;
   padding: 0 12px;
   margin: 8px 0;
 }
 
-.codexian-sp-advanced-summary {
+.claudian-sp-advanced-summary {
   cursor: pointer;
   padding: 8px 0;
   font-size: var(--font-ui-small);
@@ -243,16 +243,16 @@
   font-weight: var(--font-medium);
 }
 
-.codexian-sp-advanced-section[open] .codexian-sp-advanced-summary {
+.claudian-sp-advanced-section[open] .claudian-sp-advanced-summary {
   margin-bottom: 4px;
 }
 
-.codexian-sp-modal .modal-content {
+.claudian-sp-modal .modal-content {
   max-width: 600px;
   width: auto;
 }
 
-.codexian-sp-content-area {
+.claudian-sp-content-area {
   width: 100%;
   font-family: var(--font-monospace);
   font-size: 13px;
@@ -265,12 +265,12 @@
   margin-top: 8px;
 }
 
-.codexian-sp-content-area:focus {
+.claudian-sp-content-area:focus {
   outline: none;
   border-color: var(--interactive-accent);
 }
 
-.codexian-sp-modal-buttons {
+.claudian-sp-modal-buttons {
   display: flex;
   gap: 8px;
   margin-top: 16px;

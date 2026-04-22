@@ -44,7 +44,7 @@ function openHotkeySettings(app: App): void {
       return;
     }
 
-    searchEl.value = 'Codexian';
+    searchEl.value = 'Claudian';
     tab.updateHotkeyVisibility?.();
   }, 100);
 }
@@ -69,13 +69,13 @@ function addHotkeySettingRow(
   translationPrefix: string,
 ): void {
   const hotkey = getHotkeyForCommand(app, commandId);
-  const item = containerEl.createDiv({ cls: 'codexian-hotkey-item' });
+  const item = containerEl.createDiv({ cls: 'claudian-hotkey-item' });
   item.createSpan({
-    cls: 'codexian-hotkey-name',
+    cls: 'claudian-hotkey-name',
     text: t(`${translationPrefix}.name` as TranslationKey),
   });
   if (hotkey) {
-    item.createSpan({ cls: 'codexian-hotkey-badge', text: hotkey });
+    item.createSpan({ cls: 'claudian-hotkey-badge', text: hotkey });
   }
   item.addEventListener('click', () => openHotkeySettings(app));
 }
@@ -92,7 +92,7 @@ export class ClaudianSettingTab extends PluginSettingTab {
   display(): void {
     const { containerEl } = this;
     containerEl.empty();
-    containerEl.addClass('codexian-settings');
+    containerEl.addClass('claudian-settings');
 
     setLocale(this.plugin.settings.locale as Locale);
 
@@ -102,7 +102,7 @@ export class ClaudianSettingTab extends PluginSettingTab {
       this.activeTab = 'general';
     }
 
-    const tabBar = containerEl.createDiv({ cls: 'codexian-settings-tabs' });
+    const tabBar = containerEl.createDiv({ cls: 'claudian-settings-tabs' });
     const tabButtons = new Map<SettingsTabId, HTMLButtonElement>();
     const tabContents = new Map<SettingsTabId, HTMLDivElement>();
 
@@ -111,14 +111,14 @@ export class ClaudianSettingTab extends PluginSettingTab {
         ? t('settings.tabs.general' as TranslationKey)
         : ProviderRegistry.getProviderDisplayName(id);
       const button = tabBar.createEl('button', {
-        cls: `codexian-settings-tab${id === this.activeTab ? ' codexian-settings-tab--active' : ''}`,
+        cls: `claudian-settings-tab${id === this.activeTab ? ' claudian-settings-tab--active' : ''}`,
         text: label,
       });
       button.addEventListener('click', () => {
         this.activeTab = id;
         for (const tabId of tabIds) {
-          tabButtons.get(tabId)?.toggleClass('codexian-settings-tab--active', tabId === id);
-          tabContents.get(tabId)?.toggleClass('codexian-settings-tab-content--active', tabId === id);
+          tabButtons.get(tabId)?.toggleClass('claudian-settings-tab--active', tabId === id);
+          tabContents.get(tabId)?.toggleClass('claudian-settings-tab-content--active', tabId === id);
         }
       });
       tabButtons.set(id, button);
@@ -126,7 +126,7 @@ export class ClaudianSettingTab extends PluginSettingTab {
 
     for (const id of tabIds) {
       const content = containerEl.createDiv({
-        cls: `codexian-settings-tab-content${id === this.activeTab ? ' codexian-settings-tab-content--active' : ''}`,
+        cls: `claudian-settings-tab-content${id === this.activeTab ? ' claudian-settings-tab-content--active' : ''}`,
       });
       tabContents.set(id, content);
     }
@@ -205,7 +205,7 @@ export class ClaudianSettingTab extends PluginSettingTab {
       .setName(t('settings.maxTabs.name'))
       .setDesc(t('settings.maxTabs.desc'));
 
-    const maxTabsWarningEl = container.createDiv({ cls: 'codexian-max-tabs-warning' });
+    const maxTabsWarningEl = container.createDiv({ cls: 'claudian-max-tabs-warning' });
     maxTabsWarningEl.style.color = 'var(--text-warning)';
     maxTabsWarningEl.style.fontSize = '0.85em';
     maxTabsWarningEl.style.marginTop = '-0.5em';
@@ -362,7 +362,7 @@ export class ClaudianSettingTab extends PluginSettingTab {
             this.plugin.settings.mediaFolder = value.trim();
             await this.plugin.saveSettings();
           });
-        text.inputEl.addClass('codexian-settings-media-input');
+        text.inputEl.addClass('claudian-settings-media-input');
         text.inputEl.addEventListener('blur', () => this.restartServiceForPromptChange());
       });
 
@@ -428,12 +428,12 @@ export class ClaudianSettingTab extends PluginSettingTab {
 
     new Setting(container).setName(t('settings.hotkeys')).setHeading();
 
-    const hotkeyGrid = container.createDiv({ cls: 'codexian-hotkey-grid' });
-    addHotkeySettingRow(hotkeyGrid, this.app, 'codexian:inline-edit', 'settings.inlineEditHotkey');
-    addHotkeySettingRow(hotkeyGrid, this.app, 'codexian:open-view', 'settings.openChatHotkey');
-    addHotkeySettingRow(hotkeyGrid, this.app, 'codexian:new-session', 'settings.newSessionHotkey');
-    addHotkeySettingRow(hotkeyGrid, this.app, 'codexian:new-tab', 'settings.newTabHotkey');
-    addHotkeySettingRow(hotkeyGrid, this.app, 'codexian:close-current-tab', 'settings.closeTabHotkey');
+    const hotkeyGrid = container.createDiv({ cls: 'claudian-hotkey-grid' });
+    addHotkeySettingRow(hotkeyGrid, this.app, 'claudian:inline-edit', 'settings.inlineEditHotkey');
+    addHotkeySettingRow(hotkeyGrid, this.app, 'claudian:open-view', 'settings.openChatHotkey');
+    addHotkeySettingRow(hotkeyGrid, this.app, 'claudian:new-session', 'settings.newSessionHotkey');
+    addHotkeySettingRow(hotkeyGrid, this.app, 'claudian:new-tab', 'settings.newTabHotkey');
+    addHotkeySettingRow(hotkeyGrid, this.app, 'claudian:close-current-tab', 'settings.closeTabHotkey');
 
     // --- Environment ---
 
@@ -495,33 +495,33 @@ export class ClaudianSettingTab extends PluginSettingTab {
       return;
     }
 
-    const headerEl = container.createDiv({ cls: 'codexian-context-limits-header' });
+    const headerEl = container.createDiv({ cls: 'claudian-context-limits-header' });
     headerEl.createSpan({
       text: t('settings.customContextLimits.name'),
-      cls: 'codexian-context-limits-label',
+      cls: 'claudian-context-limits-label',
     });
 
-    const descEl = container.createDiv({ cls: 'codexian-context-limits-desc' });
+    const descEl = container.createDiv({ cls: 'claudian-context-limits-desc' });
     descEl.setText(t('settings.customContextLimits.desc'));
 
-    const listEl = container.createDiv({ cls: 'codexian-context-limits-list' });
+    const listEl = container.createDiv({ cls: 'claudian-context-limits-list' });
 
     for (const modelId of uniqueModelIds) {
       const currentValue = this.plugin.settings.customContextLimits?.[modelId];
 
-      const itemEl = listEl.createDiv({ cls: 'codexian-context-limits-item' });
-      const nameEl = itemEl.createDiv({ cls: 'codexian-context-limits-model' });
+      const itemEl = listEl.createDiv({ cls: 'claudian-context-limits-item' });
+      const nameEl = itemEl.createDiv({ cls: 'claudian-context-limits-model' });
       nameEl.setText(modelId);
 
-      const inputWrapper = itemEl.createDiv({ cls: 'codexian-context-limits-input-wrapper' });
+      const inputWrapper = itemEl.createDiv({ cls: 'claudian-context-limits-input-wrapper' });
       const inputEl = inputWrapper.createEl('input', {
         type: 'text',
         placeholder: '200k',
-        cls: 'codexian-context-limits-input',
+        cls: 'claudian-context-limits-input',
         value: currentValue ? formatContextLimit(currentValue) : '',
       });
 
-      const validationEl = inputWrapper.createDiv({ cls: 'codexian-context-limit-validation' });
+      const validationEl = inputWrapper.createDiv({ cls: 'claudian-context-limit-validation' });
 
       inputEl.addEventListener('input', async () => {
         const trimmed = inputEl.value.trim();
@@ -533,19 +533,19 @@ export class ClaudianSettingTab extends PluginSettingTab {
         if (!trimmed) {
           delete this.plugin.settings.customContextLimits[modelId];
           validationEl.style.display = 'none';
-          inputEl.classList.remove('codexian-input-error');
+          inputEl.classList.remove('claudian-input-error');
         } else {
           const parsed = parseContextLimit(trimmed);
           if (parsed === null) {
             validationEl.setText(t('settings.customContextLimits.invalid'));
             validationEl.style.display = 'block';
-            inputEl.classList.add('codexian-input-error');
+            inputEl.classList.add('claudian-input-error');
             return;
           }
 
           this.plugin.settings.customContextLimits[modelId] = parsed;
           validationEl.style.display = 'none';
-          inputEl.classList.remove('codexian-input-error');
+          inputEl.classList.remove('claudian-input-error');
         }
 
         await this.plugin.saveSettings();

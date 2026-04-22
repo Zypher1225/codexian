@@ -51,7 +51,7 @@ describe('ClaudianService', () => {
         model: 'claude-3-5-sonnet',
         permissionMode: 'ask' as const,
         thinkingBudget: 0,
-        mediaFolder: 'codexian-media',
+        mediaFolder: 'claudian-media',
         systemPrompt: '',
         loadUserClaudeSettings: false,
         claudeCliPath: '/usr/local/bin/claude',
@@ -2024,7 +2024,7 @@ describe('ClaudianService', () => {
 
     it('should yield error when Node.js is missing', async () => {
       jest.spyOn(envUtils, 'getMissingNodeError').mockReturnValueOnce(
-        'Codex CLI requires Node.js, but Node was not found'
+        'Claude Code CLI requires Node.js, but Node was not found'
       );
 
       const chunks = await collectChunks(service.query('hello'));

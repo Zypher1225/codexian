@@ -21,13 +21,6 @@
     "refresh": "Refresh",
     "rewind": "Rewind"
   },
-  "commands": {
-    "openView": "Open Codexian",
-    "inlineEdit": "Inline edit",
-    "newTab": "New tab",
-    "newSession": "New session (in current tab)",
-    "closeCurrentTab": "Close current tab"
-  },
   "chat": {
     "rewind": {
       "confirmMessage": "Rewind to this point? File changes after this message will be reverted. Rewinding does not affect files edited manually or via bash.",
@@ -72,10 +65,10 @@
     }
   },
   "settings": {
-    "title": "Codexian Settings",
+    "title": "Claudian Settings",
     "tabs": {
       "general": "General",
-      "claude": "Codex",
+      "claude": "Claude",
       "codex": "Codex"
     },
     "display": "Display",
@@ -86,7 +79,7 @@
     "models": "Models",
     "experimental": "Experimental",
     "userName": {
-      "name": "What should Codexian call you?",
+      "name": "What should Claudian call you?",
       "desc": "Your name for personalized greetings (leave empty for generic greetings)"
     },
     "excludedTags": {
@@ -95,7 +88,7 @@
     },
     "mediaFolder": {
       "name": "Media folder",
-      "desc": "Folder containing attachments/images. When notes use ![[image.jpg]], Codex will look here. Leave empty for vault root."
+      "desc": "Folder containing attachments/images. When notes use ![[image.jpg]], Claude will look here. Leave empty for vault root."
     },
     "systemPrompt": {
       "name": "Custom system prompt",
@@ -152,24 +145,24 @@
     },
     "slashCommands": {
       "name": "Commands and Skills",
-      "desc": "Manage vault-level commands and skills stored in .codex/commands/ and .codex/skills/. Triggered by /name."
+      "desc": "Manage vault-level commands and skills stored in .claude/commands/ and .claude/skills/. Triggered by /name."
     },
     "hiddenSlashCommands": {
       "name": "Hidden Commands",
-      "desc": "Hide specific slash commands from the dropdown. Useful for hiding Codex commands that are not relevant to Codexian. Enter command names without the leading slash, one per line.",
+      "desc": "Hide specific slash commands from the dropdown. Useful for hiding Claude Code commands that are not relevant to Claudian. Enter command names without the leading slash, one per line.",
       "placeholder": "commit\nbuild\ntest"
     },
     "mcpServers": {
       "name": "MCP Servers",
-      "desc": "Manage vault-level MCP server configurations stored in .codex/mcp.json. Servers with context-saving mode require @mention to activate."
+      "desc": "Manage vault-level MCP server configurations stored in .claude/mcp.json. Servers with context-saving mode require @mention to activate."
     },
     "plugins": {
-      "name": "Codex Plugins",
-      "desc": "Manage Codex plugins discovered from ~/.codex/plugins. Enabled plugins are stored per vault in .codex/settings.json."
+      "name": "Claude Code Plugins",
+      "desc": "Manage Claude Code plugins discovered from ~/.claude/plugins. Enabled plugins are stored per vault in .claude/settings.json."
     },
     "subagents": {
       "name": "Subagents",
-      "desc": "Manage vault-level subagents stored in .codex/agents/. Each Markdown file defines one custom agent.",
+      "desc": "Manage vault-level subagents stored in .claude/agents/. Each Markdown file defines one custom agent.",
       "noAgents": "No subagents configured. Click + to create one.",
       "deleteConfirm": "Delete subagent \"{name}\"?",
       "saveFailed": "Failed to save subagent: {message}",
@@ -207,8 +200,8 @@
     },
     "safety": "Safety",
     "loadUserSettings": {
-      "name": "Load user Codex settings",
-      "desc": "Load ~/.codex/settings.json. When enabled, user's Codex permission rules may bypass Safe mode."
+      "name": "Load user Claude settings",
+      "desc": "Load ~/.claude/settings.json. When enabled, user's Claude Code permission rules may bypass Safe mode."
     },
     "claudeSafeMode": {
       "name": "Safe mode",
@@ -221,7 +214,7 @@
     "environment": "Environment",
     "customVariables": {
       "name": "Custom variables",
-      "desc": "Environment variables for Codex CLI (KEY=VALUE format, one per line). Shell export prefix supported."
+      "desc": "Environment variables for Claude SDK (KEY=VALUE format, one per line). Shell export prefix supported."
     },
     "envSnippets": {
       "name": "Snippets",
@@ -257,12 +250,12 @@
     },
     "customModels": {
       "name": "Custom models",
-      "desc": "Append additional Codex model IDs to the picker, one per line. Environment model overrides still replace the picker.",
-      "placeholder": "gpt-5.4-4-6\ngpt-5.4-4-6[1m]\ngpt-5.4-4-5-20251101"
+      "desc": "Append additional Claude model IDs to the picker, one per line. Environment model overrides still replace the picker.",
+      "placeholder": "claude-opus-4-6\nclaude-opus-4-6[1m]\nclaude-opus-4-5-20251101"
     },
     "enableChrome": {
       "name": "Enable Chrome extension",
-      "desc": "Allow Codex to interact with Chrome via the codex-in-chrome extension. Requires the extension to be installed. Requires session restart."
+      "desc": "Allow Claude to interact with Chrome via the claude-in-chrome extension. Requires the extension to be installed. Requires session restart."
     },
     "enableBangBash": {
       "name": "Enable bash mode (!)",
@@ -273,7 +266,7 @@
     },
     "maxTabs": {
       "name": "Maximum chat tabs",
-      "desc": "Maximum number of concurrent chat tabs (3-10). Each tab uses a separate Codex session.",
+      "desc": "Maximum number of concurrent chat tabs (3-10). Each tab uses a separate Claude session.",
       "warning": "More than 5 tabs may impact performance and memory usage."
     },
     "tabBarPosition": {
@@ -284,17 +277,17 @@
     },
     "enableAutoScroll": {
       "name": "Auto-scroll during streaming",
-      "desc": "Automatically scroll to the bottom as Codex streams responses. Disable to stay at the top and read from the beginning."
+      "desc": "Automatically scroll to the bottom as Claude streams responses. Disable to stay at the top and read from the beginning."
     },
     "openInMainTab": {
       "name": "Open in main editor area",
       "desc": "Open chat panel as a main tab in the center editor area instead of the right sidebar"
     },
     "cliPath": {
-      "name": "Codex CLI path",
-      "desc": "Custom path to Codex CLI. Leave empty for auto-detection.",
-      "descWindows": "For the native installer, use codex.exe. For npm/pnpm/yarn or other package manager installs, use the cli.js path (not codex.cmd).",
-      "descUnix": "Paste the output of \"which codex\" — works for both native and npm/pnpm/yarn installs.",
+      "name": "Claude CLI path",
+      "desc": "Custom path to Claude Code CLI. Leave empty for auto-detection.",
+      "descWindows": "For the native installer, use claude.exe. For npm/pnpm/yarn or other package manager installs, use the cli.js path (not claude.cmd).",
+      "descUnix": "Paste the output of \"which claude\" — works for both native and npm/pnpm/yarn installs.",
       "validation": {
         "notExist": "Path does not exist",
         "isDirectory": "Path is a directory, not a file"
@@ -303,6 +296,56 @@
     "language": {
       "name": "Language",
       "desc": "Change the display language of the plugin interface"
+    },
+    "codex": {
+      "enableProvider": {
+        "name": "Enable Codex provider",
+        "desc": "When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved."
+      },
+      "installationMethod": {
+        "name": "Installation method",
+        "desc": "How Codexian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro."
+      },
+      "cliPath": {
+        "name": "Codex CLI path ({host})",
+        "descUnix": "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH.",
+        "descWsl": "Linux-side Codex command or absolute path to run inside WSL. Leave empty for PATH lookup inside the selected distro.",
+        "descWindows": "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH. Use the native Windows executable path, usually `codex.exe`.",
+        "validationWslWindowsPath": "WSL mode expects a Linux command or Linux absolute path, not a Windows executable path."
+      },
+      "wslDistro": {
+        "name": "WSL distro override",
+        "desc": "Optional advanced override. Leave empty to infer the distro from a \\wsl$ workspace path when possible, otherwise use the default WSL distro."
+      },
+      "reasoningSummary": {
+        "name": "Reasoning summary",
+        "desc": "Show a summary of the model's reasoning process in the thinking block.",
+        "auto": "Auto",
+        "concise": "Concise",
+        "detailed": "Detailed",
+        "none": "Off"
+      },
+      "skills": {
+        "name": "Codex Skills",
+        "desc": "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here."
+      },
+      "hiddenSkills": {
+        "name": "Hidden Skills",
+        "desc": "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line.",
+        "placeholder": "analyze\nexplain\nfix"
+      },
+      "subagents": {
+        "name": "Codex Subagents",
+        "desc": "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent."
+      },
+      "mcp": {
+        "before": "Codex manages MCP servers via its own CLI. Configure with ",
+        "after": " and they will be available in Codexian. "
+      },
+      "environment": {
+        "name": "Codex environment",
+        "desc": "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section."
+      }
     }
   }
 }

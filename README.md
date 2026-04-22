@@ -132,7 +132,7 @@ npm run build
 
 ## 致谢
 
-Codexian 面向本地 Codex CLI 工作流设计，把 Obsidian vault、笔记上下文、MCP、Skills 和 Subagents 组织成一个可直接使用的 Codex 插件体验。
+Codexian 的架构来自优秀的 Obsidian agent 插件基础项目 [YishenTu/claudian](https://github.com/YishenTu/claudian)，并在此基础上将本地 Codex CLI 作为默认和主要 provider。
 
 感谢 [Obsidian](https://obsidian.md) 提供插件 API，感谢 [OpenAI](https://openai.com) 提供 [Codex](https://github.com/openai/codex)。
 

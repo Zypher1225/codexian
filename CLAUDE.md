@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Codexian is an Obsidian desktop plugin that embeds local Codex CLI workflows in a sidebar and inline-edit flow. Codex is enabled by default and uses `codex app-server` over stdio JSON-RPC. The codebase keeps a provider-neutral architecture so provider implementations can coexist behind stable runtime and settings contracts.
+Codexian is an Obsidian desktop plugin that embeds local Codex CLI workflows in a sidebar and inline-edit flow. Codex is enabled by default and uses `codex app-server` over stdio JSON-RPC. The codebase keeps the provider-neutral architecture inherited from Claudian so optional providers can continue to coexist behind stable runtime and settings contracts.
 
 ## Architecture Status
 
@@ -56,8 +56,8 @@ Tests mirror the `src/` layout under `tests/unit/` and `tests/integration/`.
 
 | Path | Contents |
 |------|----------|
-| `.codexian/codexian-settings.json` | Shared app settings plus provider-specific configuration |
-| `.codexian/sessions/*.meta.json` | Provider-neutral session metadata |
+| `.claudian/claudian-settings.json` | Shared app settings plus provider-specific configuration |
+| `.claudian/sessions/*.meta.json` | Provider-neutral session metadata |
 | `.codex/skills/*/SKILL.md` | Codex vault skills |
 | `.agents/skills/*/SKILL.md` | Alternate Codex vault skill root |
 | `.codex/agents/*.toml` | Codex vault subagent definitions |

@@ -481,7 +481,7 @@ describe('McpStorage', () => {
   });
 
   describe('parseClipboardConfig', () => {
-    it('parses full Codex format (mcpServers wrapper)', () => {
+    it('parses full Claude Code format (mcpServers wrapper)', () => {
       const json = JSON.stringify({
         mcpServers: {
           'my-server': { command: 'node', args: ['server.js'] },

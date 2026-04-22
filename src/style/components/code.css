@@ -1,12 +1,12 @@
 /* Code block wrapper - contains pre + button outside scroll area */
-.codexian-code-wrapper {
+.claudian-code-wrapper {
   position: relative;
   margin: 8px 0;
 }
 
 /* Code blocks in chat messages */
-.codexian-code-wrapper pre,
-.codexian-message-content pre {
+.claudian-code-wrapper pre,
+.claudian-message-content pre {
   background: rgba(0, 0, 0, 0.2);
   padding: 8px 12px;
   border-radius: 6px;
@@ -15,30 +15,30 @@
 }
 
 /* Light mode: use a lighter background so hljs comment colors stay readable */
-body.theme-light .codexian-code-wrapper pre,
-body.theme-light .codexian-message-content pre {
+body.theme-light .claudian-code-wrapper pre,
+body.theme-light .claudian-message-content pre {
   background: rgba(0, 0, 0, 0.08);
 }
 
 /* Code blocks without language - wrap content */
-.codexian-code-wrapper:not(.has-language) pre {
+.claudian-code-wrapper:not(.has-language) pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-x: hidden;
 }
 
 /* Unwrapped pre still needs margin */
-.codexian-message-content>pre {
+.claudian-message-content>pre {
   margin: 8px 0;
 }
 
-.codexian-message-content code {
+.claudian-message-content code {
   font-family: var(--font-monospace);
   font-size: 13px;
 }
 
 /* Clickable language label - positioned outside scroll area */
-.codexian-code-wrapper .codexian-code-lang-label {
+.claudian-code-wrapper .claudian-code-lang-label {
   position: absolute;
   top: 6px;
   inset-inline-end: 6px;
@@ -53,18 +53,18 @@ body.theme-light .codexian-message-content pre {
   transition: color 0.15s ease, background 0.15s ease;
 }
 
-.codexian-code-wrapper .codexian-code-lang-label:hover {
+.claudian-code-wrapper .claudian-code-lang-label:hover {
   color: var(--text-normal);
   background: var(--background-modifier-hover);
 }
 
 /* Hide default copy button when language label exists */
-.codexian-code-wrapper.has-language .copy-code-button {
+.claudian-code-wrapper.has-language .copy-code-button {
   display: none;
 }
 
 /* Copy button - positioned outside scroll area */
-.codexian-code-wrapper .copy-code-button {
+.claudian-code-wrapper .copy-code-button {
   position: absolute;
   top: 6px;
   inset-inline-end: 6px;
@@ -81,17 +81,17 @@ body.theme-light .codexian-message-content pre {
 }
 
 /* If copy button uses an icon (svg) */
-.codexian-code-wrapper .copy-code-button svg {
+.claudian-code-wrapper .copy-code-button svg {
   width: 14px;
   height: 14px;
 }
 
 /* Show copy button on hover */
-.codexian-code-wrapper:not(.has-language):hover .copy-code-button {
+.claudian-code-wrapper:not(.has-language):hover .copy-code-button {
   opacity: 1;
 }
 
-.codexian-code-wrapper .copy-code-button:hover {
+.claudian-code-wrapper .copy-code-button:hover {
   background: var(--background-modifier-hover);
   color: var(--text-normal);
 }

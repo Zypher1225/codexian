@@ -132,7 +132,7 @@ npm run build
 
 ## Acknowledgments
 
-Codexian is designed around local Codex CLI workflows, bringing the Obsidian vault, note context, MCP, Skills, and Subagents into a usable Codex plugin experience.
+Codexian is architected from the excellent Obsidian agent-plugin foundation in [YishenTu/claudian](https://github.com/YishenTu/claudian), refocused around local Codex CLI as the default and primary provider.
 
 Thanks to [Obsidian](https://obsidian.md) for the plugin API and [OpenAI](https://openai.com) for [Codex](https://github.com/openai/codex).
 

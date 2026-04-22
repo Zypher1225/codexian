@@ -1,12 +1,12 @@
 /* MCP Server Selector */
-.codexian-mcp-selector {
+.claudian-mcp-selector {
   position: relative;
   display: flex;
   align-items: center;
   margin-left: 8px;
 }
 
-.codexian-mcp-selector-icon-wrapper {
+.claudian-mcp-selector-icon-wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@
   cursor: pointer;
 }
 
-.codexian-mcp-selector-icon {
+.claudian-mcp-selector-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,37 +24,37 @@
   transition: color 0.15s ease;
 }
 
-.codexian-mcp-selector-icon-wrapper:hover .codexian-mcp-selector-icon {
+.claudian-mcp-selector-icon-wrapper:hover .claudian-mcp-selector-icon {
   color: var(--text-normal);
 }
 
-.codexian-mcp-selector-icon.active {
-  color: var(--codexian-brand);
+.claudian-mcp-selector-icon.active {
+  color: var(--claudian-brand);
   animation: mcp-glow 2s ease-in-out infinite;
 }
 
-.codexian-mcp-selector-icon svg {
+.claudian-mcp-selector-icon svg {
   width: 16px;
   height: 16px;
 }
 
-.codexian-mcp-selector-badge {
+.claudian-mcp-selector-badge {
   position: absolute;
   top: 0;
   right: 0;
   font-size: 9px;
   font-weight: 600;
-  color: var(--codexian-brand);
+  color: var(--claudian-brand);
   opacity: 0;
   transition: opacity 0.15s ease;
   pointer-events: none;
 }
 
-.codexian-mcp-selector-badge.visible {
+.claudian-mcp-selector-badge.visible {
   opacity: 1;
 }
 
-.codexian-mcp-selector-dropdown {
+.claudian-mcp-selector-dropdown {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -73,7 +73,7 @@
 }
 
 /* Bridge the gap between icon and dropdown to prevent hover breaks */
-.codexian-mcp-selector-dropdown::after {
+.claudian-mcp-selector-dropdown::after {
   content: '';
   position: absolute;
   left: 0;
@@ -82,13 +82,13 @@
   height: 8px;
 }
 
-.codexian-mcp-selector-dropdown.visible,
-.codexian-mcp-selector:hover .codexian-mcp-selector-dropdown {
+.claudian-mcp-selector-dropdown.visible,
+.claudian-mcp-selector:hover .claudian-mcp-selector-dropdown {
   opacity: 1;
   visibility: visible;
 }
 
-.codexian-mcp-selector-header {
+.claudian-mcp-selector-header {
   padding: 10px 12px;
   font-size: 12px;
   font-weight: 600;
@@ -96,12 +96,12 @@
   border-bottom: 1px solid var(--background-modifier-border);
 }
 
-.codexian-mcp-selector-list {
+.claudian-mcp-selector-list {
   max-height: 200px;
   overflow-y: auto;
 }
 
-.codexian-mcp-selector-empty {
+.claudian-mcp-selector-empty {
   padding: 16px 12px;
   text-align: center;
   color: var(--text-muted);
@@ -109,7 +109,7 @@
   font-style: italic;
 }
 
-.codexian-mcp-selector-item {
+.claudian-mcp-selector-item {
   display: flex;
   align-items: center;
   padding: 8px 12px;
@@ -118,15 +118,15 @@
   transition: background 0.15s ease;
 }
 
-.codexian-mcp-selector-item:hover {
+.claudian-mcp-selector-item:hover {
   background: var(--background-modifier-hover);
 }
 
-.codexian-mcp-selector-item.enabled {
-  background: rgba(var(--codexian-brand-rgb), 0.1);
+.claudian-mcp-selector-item.enabled {
+  background: rgba(var(--claudian-brand-rgb), 0.1);
 }
 
-.codexian-mcp-selector-check {
+.claudian-mcp-selector-check {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,20 +134,20 @@
   height: 16px;
   border: 1px solid var(--background-modifier-border);
   border-radius: 3px;
-  color: var(--codexian-brand);
+  color: var(--claudian-brand);
 }
 
-.codexian-mcp-selector-item.enabled .codexian-mcp-selector-check {
-  background: rgba(var(--codexian-brand-rgb), 0.2);
-  border-color: var(--codexian-brand);
+.claudian-mcp-selector-item.enabled .claudian-mcp-selector-check {
+  background: rgba(var(--claudian-brand-rgb), 0.2);
+  border-color: var(--claudian-brand);
 }
 
-.codexian-mcp-selector-check svg {
+.claudian-mcp-selector-check svg {
   width: 12px;
   height: 12px;
 }
 
-.codexian-mcp-selector-item-info {
+.claudian-mcp-selector-item-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -156,7 +156,7 @@
   overflow: hidden;
 }
 
-.codexian-mcp-selector-item-name {
+.claudian-mcp-selector-item-name {
   font-size: 12px;
   color: var(--text-normal);
   overflow: hidden;
@@ -164,13 +164,13 @@
   white-space: nowrap;
 }
 
-.codexian-mcp-selector-cs-badge {
+.claudian-mcp-selector-cs-badge {
   font-size: 10px;
   font-weight: 600;
   padding: 1px 4px;
   border-radius: 3px;
-  background: rgba(var(--codexian-brand-rgb), 0.2);
-  color: var(--codexian-brand);
+  background: rgba(var(--claudian-brand-rgb), 0.2);
+  color: var(--claudian-brand);
   flex-shrink: 0;
   margin-left: auto;
 }

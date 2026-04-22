@@ -1,9 +1,9 @@
 /* Context Limits Styles */
-.codexian-context-limits-container {
+.claudian-context-limits-container {
   margin-top: 16px;
 }
 
-.codexian-context-limits-header {
+.claudian-context-limits-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,27 +12,27 @@
   padding: 0 12px;
 }
 
-.codexian-context-limits-label {
+.claudian-context-limits-label {
   font-size: var(--font-ui-small);
   color: var(--text-muted);
   font-weight: var(--font-medium);
 }
 
-.codexian-context-limits-desc {
+.claudian-context-limits-desc {
   font-size: var(--font-ui-smaller);
   color: var(--text-muted);
   padding: 0 12px;
   margin-bottom: 8px;
 }
 
-.codexian-context-limits-list {
+.claudian-context-limits-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-top: 8px;
 }
 
-.codexian-context-limits-item {
+.claudian-context-limits-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,11 +42,11 @@
   transition: background-color 0.2s;
 }
 
-.codexian-context-limits-item:hover {
+.claudian-context-limits-item:hover {
   background: var(--background-modifier-hover);
 }
 
-.codexian-context-limits-model {
+.claudian-context-limits-model {
   font-family: var(--font-monospace);
   font-size: var(--font-ui-small);
   color: var(--text-normal);
@@ -55,7 +55,7 @@
   word-break: break-all;
 }
 
-.codexian-context-limits-input-wrapper {
+.claudian-context-limits-input-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -63,7 +63,7 @@
   flex-shrink: 0;
 }
 
-.codexian-context-limits-input {
+.claudian-context-limits-input {
   width: 80px;
   padding: 4px 8px;
   font-size: var(--font-ui-small);
@@ -73,16 +73,16 @@
   color: var(--text-normal);
 }
 
-.codexian-context-limits-input:focus {
+.claudian-context-limits-input:focus {
   border-color: var(--interactive-accent);
   outline: none;
 }
 
-.codexian-context-limits-input.codexian-input-error {
+.claudian-context-limits-input.claudian-input-error {
   border-color: var(--text-error);
 }
 
-.codexian-context-limit-validation {
+.claudian-context-limit-validation {
   display: none;
   font-size: var(--font-ui-smaller);
   color: var(--text-error);
@@ -90,11 +90,11 @@
 }
 
 /* Environment Snippets Styles */
-.codexian-env-snippets-container {
+.claudian-env-snippets-container {
   margin-top: 16px;
 }
 
-.codexian-snippet-header {
+.claudian-snippet-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -103,13 +103,13 @@
   padding: 0 12px;
 }
 
-.codexian-snippet-label {
+.claudian-snippet-label {
   font-size: var(--font-ui-small);
   color: var(--text-muted);
   font-weight: var(--font-medium);
 }
 
-.codexian-save-env-btn {
+.claudian-save-env-btn {
   padding: 6px 16px;
   font-size: 13px;
   background: var(--interactive-accent);
@@ -120,11 +120,11 @@
   transition: opacity 0.2s;
 }
 
-.codexian-save-env-btn:hover {
+.claudian-save-env-btn:hover {
   opacity: 0.9;
 }
 
-.codexian-snippet-empty {
+.claudian-snippet-empty {
   padding: 20px;
   text-align: center;
   color: var(--text-muted);
@@ -133,14 +133,14 @@
   margin-top: 8px;
 }
 
-.codexian-snippet-list {
+.claudian-snippet-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-top: 8px;
 }
 
-.codexian-snippet-item {
+.claudian-snippet-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -150,34 +150,34 @@
   transition: background-color 0.2s;
 }
 
-.codexian-snippet-item:hover {
+.claudian-snippet-item:hover {
   background: var(--background-modifier-hover);
 }
 
-.codexian-snippet-info {
+.claudian-snippet-info {
   flex: 1;
   min-width: 0;
 }
 
-.codexian-snippet-name {
+.claudian-snippet-name {
   font-weight: 600;
   margin-bottom: 4px;
   word-break: break-word;
 }
 
-.codexian-snippet-description {
+.claudian-snippet-description {
   font-size: 13px;
   color: var(--text-muted);
 }
 
-.codexian-snippet-actions {
+.claudian-snippet-actions {
   display: flex;
   gap: 4px;
   margin-left: 16px;
   flex-shrink: 0;
 }
 
-.codexian-restore-snippet-btn {
+.claudian-restore-snippet-btn {
   padding: 4px 12px;
   font-size: 12px;
   background: var(--interactive-accent);
@@ -187,11 +187,11 @@
   cursor: pointer;
 }
 
-.codexian-restore-snippet-btn:hover {
+.claudian-restore-snippet-btn:hover {
   opacity: 0.9;
 }
 
-.codexian-edit-snippet-btn {
+.claudian-edit-snippet-btn {
   padding: 4px 12px;
   font-size: 12px;
   background: var(--background-modifier-border);
@@ -201,11 +201,11 @@
   cursor: pointer;
 }
 
-.codexian-edit-snippet-btn:hover {
+.claudian-edit-snippet-btn:hover {
   background: var(--background-modifier-border-hover);
 }
 
-.codexian-delete-snippet-btn {
+.claudian-delete-snippet-btn {
   padding: 4px 12px;
   font-size: 12px;
   background: var(--background-modifier-error);
@@ -215,46 +215,46 @@
   cursor: pointer;
 }
 
-.codexian-delete-snippet-btn:hover {
+.claudian-delete-snippet-btn:hover {
   opacity: 0.9;
 }
 
 /* Env Snippet Modal */
-.codexian-env-snippet-modal .modal-content {
+.claudian-env-snippet-modal .modal-content {
   max-width: 550px;
   width: 550px;
   padding: 16px;
 }
 
-.codexian-env-snippet-modal h2 {
+.claudian-env-snippet-modal h2 {
   margin: 0 0 16px 0;
 }
 
-.codexian-env-snippet-modal .setting-item {
+.claudian-env-snippet-modal .setting-item {
   padding: 8px 0;
   margin: 0;
 }
 
-.codexian-env-snippet-modal .setting-item-info {
+.claudian-env-snippet-modal .setting-item-info {
   margin-bottom: 4px;
 }
 
 /* Full-width env vars textarea setting */
-.codexian-env-snippet-setting {
+.claudian-env-snippet-setting {
   flex-direction: column;
   align-items: flex-start;
 }
 
-.codexian-env-snippet-setting .setting-item-info {
+.claudian-env-snippet-setting .setting-item-info {
   width: 100%;
   margin-bottom: 8px;
 }
 
-.codexian-env-snippet-control {
+.claudian-env-snippet-control {
   width: 100%;
 }
 
-.codexian-env-snippet-control textarea {
+.claudian-env-snippet-control textarea {
   width: 100%;
   min-width: 100%;
   font-family: var(--font-monospace);
@@ -262,14 +262,14 @@
   resize: vertical;
 }
 
-.codexian-snippet-preview {
+.claudian-snippet-preview {
   margin: 8px 0;
   padding: 6px;
   background: var(--background-secondary);
   border-radius: 6px;
 }
 
-.codexian-env-preview {
+.claudian-env-preview {
   background: var(--background-primary);
   padding: 6px;
   border-radius: 4px;
@@ -284,15 +284,15 @@
   margin: 0;
 }
 
-.codexian-snippet-buttons {
+.claudian-snippet-buttons {
   display: flex;
   gap: 8px;
   margin-top: 16px;
   justify-content: flex-end;
 }
 
-.codexian-cancel-btn,
-.codexian-save-btn {
+.claudian-cancel-btn,
+.claudian-save-btn {
   padding: 6px 16px;
   font-size: 13px;
   border: none;
@@ -300,49 +300,49 @@
   cursor: pointer;
 }
 
-.codexian-cancel-btn {
+.claudian-cancel-btn {
   background: var(--background-modifier-border);
   color: var(--text-normal);
 }
 
-.codexian-cancel-btn:hover {
+.claudian-cancel-btn:hover {
   background: var(--background-modifier-border-hover);
 }
 
-.codexian-save-btn {
+.claudian-save-btn {
   background: var(--interactive-accent);
   color: var(--text-on-accent);
 }
 
-.codexian-save-btn:hover {
+.claudian-save-btn:hover {
   opacity: 0.9;
 }
 
 /* Context limits section in snippet modal */
-.codexian-snippet-context-limits {
+.claudian-snippet-context-limits {
   margin-top: 1em;
 }
 
-.codexian-snippet-context-limits .setting-item-description {
+.claudian-snippet-context-limits .setting-item-description {
   margin-bottom: 0.5em;
 }
 
-.codexian-snippet-limit-row {
+.claudian-snippet-limit-row {
   display: flex;
   align-items: center;
   gap: 0.5em;
   margin-bottom: 0.25em;
 }
 
-.codexian-snippet-limit-model {
+.claudian-snippet-limit-model {
   font-family: var(--font-monospace);
   font-size: var(--font-ui-small);
 }
 
-.codexian-snippet-limit-spacer {
+.claudian-snippet-limit-spacer {
   flex: 1;
 }
 
-.codexian-snippet-limit-input {
+.claudian-snippet-limit-input {
   width: 80px;
 }

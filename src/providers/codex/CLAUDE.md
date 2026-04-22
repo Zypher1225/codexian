@@ -55,7 +55,7 @@ A single session file may contain both legacy (`type: 'event'`) and modern (`typ
 
 ### Image Lifecycle
 
-Images are written to a temp directory (`os.tmpdir()/codexian-codex-images-{random}/`), passed as `{ type: 'localImage', path }` inputs, and cleaned up in the `query()` `finally` block.
+Images are written to a temp directory (`os.tmpdir()/claudian-codex-images-{random}/`), passed as `{ type: 'localImage', path }` inputs, and cleaned up in the `query()` `finally` block.
 
 ### `serverRequest/resolved`
 
@@ -64,6 +64,6 @@ The server can resolve approval/ask-user requests without waiting for client inp
 ## Gotchas
 
 - `CodexAuxQueryRunner` uses its own separate process + transport + thread — completely independent from the chat runtime
-- `CodexTaskResultInterpreter` is all no-ops because Codex subagent state does not use the legacy async task metadata path.
+- `CodexTaskResultInterpreter` is all no-ops — Claudian's async agent task system (used for Claude) doesn't apply to Codex
 - Session file paths may include a date prefix (`{date}-{threadId}.jsonl`) — `findCodexSessionFile` handles both patterns via DFS fallback
 - Codex is opt-in: `isEnabled()` defaults to `false`

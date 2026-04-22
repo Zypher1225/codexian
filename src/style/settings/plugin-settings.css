@@ -1,13 +1,13 @@
 /* Plugin Settings */
-.codexian-plugin-settings-desc {
+.claudian-plugin-settings-desc {
   margin-bottom: 12px;
 }
 
-.codexian-plugins-container {
+.claudian-plugins-container {
   margin-top: 8px;
 }
 
-.codexian-plugin-header {
+.claudian-plugin-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,13 +15,13 @@
   padding: 0 12px;
 }
 
-.codexian-plugin-label {
+.claudian-plugin-label {
   font-size: var(--font-ui-small);
   color: var(--text-muted);
   font-weight: var(--font-medium);
 }
 
-.codexian-plugin-empty {
+.claudian-plugin-empty {
   padding: 16px;
   text-align: center;
   color: var(--text-muted);
@@ -30,13 +30,13 @@
   border-radius: 6px;
 }
 
-.codexian-plugin-list {
+.claudian-plugin-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.codexian-plugin-section-header {
+.claudian-plugin-section-header {
   font-size: 11px;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -44,7 +44,7 @@
   font-weight: 600;
 }
 
-.codexian-plugin-item {
+.claudian-plugin-item {
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -54,19 +54,19 @@
   transition: background 0.15s ease;
 }
 
-.codexian-plugin-item:hover {
+.claudian-plugin-item:hover {
   background: var(--background-modifier-hover);
 }
 
-.codexian-plugin-item-disabled {
+.claudian-plugin-item-disabled {
   opacity: 0.6;
 }
 
-.codexian-plugin-item-error {
+.claudian-plugin-item-error {
   opacity: 0.8;
 }
 
-.codexian-plugin-status {
+.claudian-plugin-status {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -74,35 +74,35 @@
   flex-shrink: 0;
 }
 
-.codexian-plugin-status-enabled {
+.claudian-plugin-status-enabled {
   background: var(--color-green);
 }
 
-.codexian-plugin-status-disabled {
+.claudian-plugin-status-disabled {
   background: var(--text-muted);
 }
 
-.codexian-plugin-status-error {
+.claudian-plugin-status-error {
   background: var(--text-error);
 }
 
-.codexian-plugin-info {
+.claudian-plugin-info {
   flex: 1;
   min-width: 0;
 }
 
-.codexian-plugin-name-row {
+.claudian-plugin-name-row {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.codexian-plugin-name {
+.claudian-plugin-name {
   font-weight: 600;
 }
 
-.codexian-plugin-version-badge {
+.claudian-plugin-version-badge {
   font-size: 10px;
   padding: 2px 6px;
   background: var(--background-modifier-border);
@@ -110,7 +110,7 @@
   color: var(--text-muted);
 }
 
-.codexian-plugin-error-badge {
+.claudian-plugin-error-badge {
   font-size: 10px;
   padding: 2px 6px;
   background: var(--text-error);
@@ -119,7 +119,7 @@
   text-transform: uppercase;
 }
 
-.codexian-plugin-preview {
+.claudian-plugin-preview {
   font-size: 12px;
   color: var(--text-muted);
   margin-top: 4px;
@@ -128,17 +128,17 @@
   white-space: nowrap;
 }
 
-.codexian-plugin-preview-error {
+.claudian-plugin-preview-error {
   color: var(--text-error);
 }
 
-.codexian-plugin-actions {
+.claudian-plugin-actions {
   display: flex;
   gap: 4px;
   flex-shrink: 0;
 }
 
-.codexian-plugin-action-btn {
+.claudian-plugin-action-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,12 +153,12 @@
   transition: background 0.15s ease, color 0.15s ease;
 }
 
-.codexian-plugin-action-btn:hover {
+.claudian-plugin-action-btn:hover {
   background: var(--background-modifier-hover);
   color: var(--text-normal);
 }
 
-.codexian-plugin-action-btn svg {
+.claudian-plugin-action-btn svg {
   width: 14px;
   height: 14px;
 }

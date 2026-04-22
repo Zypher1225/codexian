@@ -1,4 +1,4 @@
-export type Locale = 'en' | 'zh-CN';
+export type Locale = 'en' | 'zh-CN' | 'zh-TW' | 'ja' | 'ko' | 'de' | 'fr' | 'es' | 'ru' | 'pt';
 
 export type TranslationKey =
   // Common UI elements
@@ -22,13 +22,6 @@ export type TranslationKey =
   | 'common.platform'
   | 'common.refresh'
   | 'common.rewind'
-
-  // Commands
-  | 'commands.openView'
-  | 'commands.inlineEdit'
-  | 'commands.newTab'
-  | 'commands.newSession'
-  | 'commands.closeCurrentTab'
 
   // Chat - Rewind
   | 'chat.rewind.confirmMessage'
@@ -236,6 +229,34 @@ export type TranslationKey =
   | 'settings.cliPath.descUnix'
   | 'settings.cliPath.validation.notExist'
   | 'settings.cliPath.validation.isDirectory'
+  | 'settings.codex.enableProvider.name'
+  | 'settings.codex.enableProvider.desc'
+  | 'settings.codex.installationMethod.name'
+  | 'settings.codex.installationMethod.desc'
+  | 'settings.codex.cliPath.name'
+  | 'settings.codex.cliPath.descUnix'
+  | 'settings.codex.cliPath.descWsl'
+  | 'settings.codex.cliPath.descWindows'
+  | 'settings.codex.cliPath.validationWslWindowsPath'
+  | 'settings.codex.wslDistro.name'
+  | 'settings.codex.wslDistro.desc'
+  | 'settings.codex.reasoningSummary.name'
+  | 'settings.codex.reasoningSummary.desc'
+  | 'settings.codex.reasoningSummary.auto'
+  | 'settings.codex.reasoningSummary.concise'
+  | 'settings.codex.reasoningSummary.detailed'
+  | 'settings.codex.reasoningSummary.none'
+  | 'settings.codex.skills.name'
+  | 'settings.codex.skills.desc'
+  | 'settings.codex.hiddenSkills.name'
+  | 'settings.codex.hiddenSkills.desc'
+  | 'settings.codex.hiddenSkills.placeholder'
+  | 'settings.codex.subagents.name'
+  | 'settings.codex.subagents.desc'
+  | 'settings.codex.mcp.before'
+  | 'settings.codex.mcp.after'
+  | 'settings.codex.environment.name'
+  | 'settings.codex.environment.desc'
 
   // Settings - Language
   | 'settings.language.name'

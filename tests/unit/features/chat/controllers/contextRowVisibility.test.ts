@@ -6,11 +6,11 @@ function createContextRow(browserIndicator: HTMLElement | null): HTMLElement {
   const fileIndicator = { style: { display: 'none' } };
   const imagePreview = { style: { display: 'none' } };
   const lookup = new Map<string, unknown>([
-    ['.codexian-selection-indicator', editorIndicator],
-    ['.codexian-browser-selection-indicator', browserIndicator],
-    ['.codexian-canvas-indicator', canvasIndicator],
-    ['.codexian-file-indicator', fileIndicator],
-    ['.codexian-image-preview', imagePreview],
+    ['.claudian-selection-indicator', editorIndicator],
+    ['.claudian-browser-selection-indicator', browserIndicator],
+    ['.claudian-canvas-indicator', canvasIndicator],
+    ['.claudian-file-indicator', fileIndicator],
+    ['.claudian-image-preview', imagePreview],
   ]);
 
   return {

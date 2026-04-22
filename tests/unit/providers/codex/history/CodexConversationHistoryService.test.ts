@@ -14,7 +14,7 @@ describe('CodexConversationHistoryService', () => {
   let tempHome: string;
 
   beforeEach(() => {
-    tempHome = fs.mkdtempSync(path.join(os.tmpdir(), 'codexian-codex-home-'));
+    tempHome = fs.mkdtempSync(path.join(os.tmpdir(), 'claudian-codex-home-'));
     homeDirSpy = jest.spyOn(os, 'homedir').mockReturnValue(tempHome);
   });
 

@@ -34,13 +34,13 @@ import type { EnvironmentScope } from './core/types/settings';
 import { ClaudianView } from './features/chat/ClaudianView';
 import { type InlineEditContext, InlineEditModal } from './features/inline-edit/ui/InlineEditModal';
 import { ClaudianSettingTab } from './features/settings/ClaudianSettings';
-import { setLocale, t } from './i18n/i18n';
+import { setLocale } from './i18n/i18n';
 import type { Locale } from './i18n/types';
 import { buildCursorContext } from './utils/editor';
 import { getVaultPath } from './utils/path';
 
 const CODEXIAN_ICON_ID = 'codexian-openai';
-const CODEXIAN_ICON_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" d="M6.137 5.824v-1.52c0-.128.047-.224.158-.288l3.03-1.76c.411-.24.903-.352 1.41-.352c1.903 0 3.108 1.488 3.108 3.072c0 .112 0 .24-.016.368l-3.14-1.856a.53.53 0 0 0-.57 0zm7.072 5.92V8.112a.54.54 0 0 0-.285-.496L8.944 5.28l1.3-.752a.29.29 0 0 1 .317 0l3.029 1.76c.872.512 1.458 1.6 1.458 2.656c0 1.216-.713 2.336-1.839 2.8m-8.008-3.2l-1.3-.768c-.111-.064-.159-.16-.159-.288v-3.52c0-1.712 1.3-3.008 3.06-3.008a2.95 2.95 0 0 1 1.809.624L5.487 3.408a.54.54 0 0 0-.286.496zM8 10.176L6.137 9.12V6.88L8 5.824L9.863 6.88v2.24zm1.197 4.864a2.95 2.95 0 0 1-1.808-.624l3.124-1.824a.54.54 0 0 0 .286-.496v-4.64l1.316.768c.11.064.158.16.158.288v3.52c0 1.712-1.316 3.008-3.076 3.008M5.44 11.472l-3.03-1.76C1.538 9.2.951 8.112.951 7.056c0-1.232.73-2.336 1.856-2.8v3.648c0 .224.095.384.285.496l3.964 2.32l-1.3.752a.29.29 0 0 1-.317 0m-.174 2.624c-1.792 0-3.108-1.36-3.108-3.04c0-.128.015-.256.031-.384l3.124 1.824q.285.168.571 0l3.98-2.32v1.52c0 .128-.047.224-.158.288l-3.03 1.76c-.412.24-.903.352-1.41.352M9.197 16c1.919 0 3.52-1.376 3.885-3.2C14.858 12.336 16 10.656 16 8.944c0-1.12-.476-2.208-1.332-2.992a4.4 4.4 0 0 0 .127-1.008c0-2.288-1.84-4-3.964-4c-.428 0-.84.064-1.253.208A3.96 3.96 0 0 0 6.803 0c-1.919 0-3.52 1.376-3.885 3.2C1.142 3.664 0 5.344 0 7.056c0 1.12.476 2.208 1.332 2.992a4.4 4.4 0 0 0-.127 1.008c0 2.288 1.84 4 3.964 4c.429 0 .84-.064 1.253-.208A3.96 3.96 0 0 0 9.197 16"/></svg>';
+const CODEXIAN_ICON_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M10 2a4 4 0 0 1 3.46 1.99l.098.182l.638-.368a4 4 0 0 1 5.475 5.446l-.113.186l.638.368a4 4 0 0 1-1.979 7.464L18 17.264V18a4 4 0 0 1-7.459 2.01l-.1-.182l-.637.368a4 4 0 0 1-5.475-5.446l.113-.186l-.638-.368a4 4 0 0 1 1.979-7.464L6 6.736V6a4 4 0 0 1 4-4m4.702 10.787l-.068 4.06a1 1 0 0 1-.391.777l-.109.072l-1.956 1.13a2.002 2.002 0 0 0 3.817-.677L16 18v-4.434zm-2.033 1.947l-3.55 1.97l-.118.056a1 1 0 0 1-.75-.006l-.117-.058l-1.956-1.13l-.09.136a2 2 0 0 0 2.578 2.835l.138-.073l3.84-2.217zm2.688-5.415l-1.324.735l3.482 2.089l.107.074a1 1 0 0 1 .37.653L18 13v2.26l.162.008a2 2 0 0 0 1.167-3.649l-.133-.083zM6 8.741a2.001 2.001 0 0 0-1.328 3.64l.132.083l3.84 2.217l1.323-.735l-3.481-2.088a1 1 0 0 1-.477-.728L6 11zm6.014 2.434l-.722.4l-.014.826l.708.425l.722-.401l.014-.826zM10 4a2 2 0 0 0-1.995 1.85L8 6v4.434l1.298.779l.068-4.06l.01-.13a1 1 0 0 1 .381-.647l.109-.072l1.957-1.13l-.068-.135A2 2 0 0 0 10 4m7.928 2.268a2 2 0 0 0-2.594-.805l-.138.073l-3.84 2.217l-.025 1.513l3.55-1.97a1 1 0 0 1 .868-.05l.117.058l1.957 1.13c.442-.62.51-1.465.105-2.166"/></g></svg>';
 
 export default class ClaudianPlugin extends Plugin {
   settings!: ClaudianSettings;
@@ -60,13 +60,13 @@ export default class ClaudianPlugin extends Plugin {
       (leaf) => new ClaudianView(leaf, this)
     );
 
-    this.addRibbonIcon(CODEXIAN_ICON_ID, t('commands.openView'), () => {
+    this.addRibbonIcon(CODEXIAN_ICON_ID, 'Open Codexian', () => {
       this.activateView();
     });
 
     this.addCommand({
       id: 'open-view',
-      name: t('commands.openView'),
+      name: 'Open Codexian',
       callback: () => {
         this.activateView();
       },
@@ -74,7 +74,7 @@ export default class ClaudianPlugin extends Plugin {
 
     this.addCommand({
       id: 'inline-edit',
-      name: t('commands.inlineEdit'),
+      name: 'Inline edit',
       editorCallback: async (editor: Editor, ctx) => {
         const view = ctx instanceof MarkdownView
           ? ctx
@@ -120,7 +120,7 @@ export default class ClaudianPlugin extends Plugin {
 
     this.addCommand({
       id: 'new-tab',
-      name: t('commands.newTab'),
+      name: 'New tab',
       checkCallback: (checking: boolean) => {
         if (!this.canCreateNewTab()) return false;
 
@@ -133,7 +133,7 @@ export default class ClaudianPlugin extends Plugin {
 
     this.addCommand({
       id: 'new-session',
-      name: t('commands.newSession'),
+      name: 'New session (in current tab)',
       checkCallback: (checking: boolean) => {
         const leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE_CLAUDIAN)[0];
         if (!leaf) return false;
@@ -156,7 +156,7 @@ export default class ClaudianPlugin extends Plugin {
 
     this.addCommand({
       id: 'close-current-tab',
-      name: t('commands.closeCurrentTab'),
+      name: 'Close current tab',
       checkCallback: (checking: boolean) => {
         const leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE_CLAUDIAN)[0];
         if (!leaf) return false;

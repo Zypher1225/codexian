@@ -1,39 +1,39 @@
 /* MCP Server Modal */
-.codexian-mcp-modal .modal-content {
+.claudian-mcp-modal .modal-content {
   width: 480px;
   max-width: 90vw;
 }
 
-.codexian-mcp-type-fields {
+.claudian-mcp-type-fields {
   margin: 12px 0;
   padding: 12px;
   background: var(--background-secondary);
   border-radius: 6px;
 }
 
-.codexian-mcp-type-fields .setting-item {
+.claudian-mcp-type-fields .setting-item {
   padding: 8px 0;
   border-top: none;
 }
 
-.codexian-mcp-type-fields .setting-item:first-child {
+.claudian-mcp-type-fields .setting-item:first-child {
   padding-top: 0;
 }
 
-.codexian-mcp-cmd-setting,
-.codexian-mcp-env-setting {
+.claudian-mcp-cmd-setting,
+.claudian-mcp-env-setting {
   flex-direction: column;
   align-items: flex-start;
 }
 
-.codexian-mcp-cmd-setting .setting-item-control,
-.codexian-mcp-env-setting .setting-item-control {
+.claudian-mcp-cmd-setting .setting-item-control,
+.claudian-mcp-env-setting .setting-item-control {
   width: 100%;
   margin-top: 8px;
 }
 
-.codexian-mcp-cmd-textarea,
-.codexian-mcp-env-textarea {
+.claudian-mcp-cmd-textarea,
+.claudian-mcp-env-textarea {
   width: 100%;
   min-height: 50px;
   resize: vertical;
@@ -45,13 +45,13 @@
   background: var(--background-primary);
 }
 
-.codexian-mcp-cmd-textarea:focus,
-.codexian-mcp-env-textarea:focus {
+.claudian-mcp-cmd-textarea:focus,
+.claudian-mcp-env-textarea:focus {
   border-color: var(--interactive-accent);
   outline: none;
 }
 
-.codexian-mcp-buttons {
+.claudian-mcp-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
@@ -59,21 +59,21 @@
 }
 
 /* MCP Test Modal */
-.codexian-mcp-test-modal {
+.claudian-mcp-test-modal {
   width: 500px;
   max-width: 90vw;
 }
 
-.codexian-mcp-test-modal .modal-content {
+.claudian-mcp-test-modal .modal-content {
   padding: 0 20px 20px 20px;
 }
 
-.codexian-mcp-test-modal .modal-title {
+.claudian-mcp-test-modal .modal-title {
   padding: 20px 20px 12px 20px;
   margin: 0 -20px;
 }
 
-.codexian-mcp-test-loading {
+.claudian-mcp-test-loading {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,18 +82,18 @@
   color: var(--text-muted);
 }
 
-.codexian-mcp-test-spinner {
+.claudian-mcp-test-spinner {
   width: 20px;
   height: 20px;
-  animation: codexian-spin 1s linear infinite;
+  animation: claudian-spin 1s linear infinite;
 }
 
-.codexian-mcp-test-spinner svg {
+.claudian-mcp-test-spinner svg {
   width: 100%;
   height: 100%;
 }
 
-.codexian-mcp-test-status {
+.claudian-mcp-test-status {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -103,29 +103,29 @@
   margin-bottom: 12px;
 }
 
-.codexian-mcp-test-icon {
+.claudian-mcp-test-icon {
   display: flex;
   align-items: center;
 }
 
-.codexian-mcp-test-icon svg {
+.claudian-mcp-test-icon svg {
   width: 20px;
   height: 20px;
 }
 
-.codexian-mcp-test-icon.success {
+.claudian-mcp-test-icon.success {
   color: var(--color-green);
 }
 
-.codexian-mcp-test-icon.error {
+.claudian-mcp-test-icon.error {
   color: var(--text-error);
 }
 
-.codexian-mcp-test-text {
+.claudian-mcp-test-text {
   font-weight: 500;
 }
 
-.codexian-mcp-test-error {
+.claudian-mcp-test-error {
   padding: 10px 12px;
   background: rgba(var(--color-red-rgb), 0.1);
   border: 1px solid var(--text-error);
@@ -135,18 +135,18 @@
   margin-bottom: 12px;
 }
 
-.codexian-mcp-test-tools {
+.claudian-mcp-test-tools {
   margin-bottom: 16px;
 }
 
-.codexian-mcp-test-tools-header {
+.claudian-mcp-test-tools-header {
   font-weight: 600;
   font-size: 13px;
   margin-bottom: 8px;
   color: var(--text-muted);
 }
 
-.codexian-mcp-test-tools-list {
+.claudian-mcp-test-tools-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -154,67 +154,67 @@
   overflow-y: auto;
 }
 
-.codexian-mcp-test-tool {
+.claudian-mcp-test-tool {
   padding: 10px 12px;
   background: var(--background-secondary);
   border-radius: 6px;
 }
 
-.codexian-mcp-test-tool-header {
+.claudian-mcp-test-tool-header {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.codexian-mcp-test-tool-icon {
+.claudian-mcp-test-tool-icon {
   display: flex;
   align-items: center;
   color: var(--text-muted);
 }
 
-.codexian-mcp-test-tool-icon svg {
+.claudian-mcp-test-tool-icon svg {
   width: 14px;
   height: 14px;
 }
 
-.codexian-mcp-test-tool-name {
+.claudian-mcp-test-tool-name {
   font-weight: 500;
   font-size: 13px;
 }
 
-.codexian-mcp-test-tool-toggle {
+.claudian-mcp-test-tool-toggle {
   margin-left: auto;
 }
 
-.codexian-mcp-test-tool-toggle .checkbox-container {
+.claudian-mcp-test-tool-toggle .checkbox-container {
   display: flex;
   align-items: center;
 }
 
-.codexian-mcp-test-tool-disabled {
+.claudian-mcp-test-tool-disabled {
   opacity: 0.75;
 }
 
-.codexian-mcp-test-tool-disabled .codexian-mcp-test-tool-name {
+.claudian-mcp-test-tool-disabled .claudian-mcp-test-tool-name {
   text-decoration: line-through;
   color: var(--text-muted);
 }
 
-.codexian-mcp-toggle-all-btn {
+.claudian-mcp-toggle-all-btn {
   margin-right: 8px;
 }
 
-.codexian-mcp-toggle-all-btn.is-destructive {
+.claudian-mcp-toggle-all-btn.is-destructive {
   background: rgba(var(--color-red-rgb), 0.1);
   border-color: rgba(var(--color-red-rgb), 0.3);
   color: var(--text-error);
 }
 
-.codexian-mcp-toggle-all-btn.is-destructive:hover {
+.claudian-mcp-toggle-all-btn.is-destructive:hover {
   background: rgba(var(--color-red-rgb), 0.2);
 }
 
-.codexian-mcp-test-tool-desc {
+.claudian-mcp-test-tool-desc {
   font-size: 12px;
   color: var(--text-muted);
   margin-top: 4px;
@@ -224,7 +224,7 @@
   overflow: hidden;
 }
 
-.codexian-mcp-test-no-tools {
+.claudian-mcp-test-no-tools {
   padding: 16px;
   text-align: center;
   color: var(--text-muted);
@@ -234,7 +234,7 @@
   margin-bottom: 16px;
 }
 
-.codexian-mcp-test-buttons {
+.claudian-mcp-test-buttons {
   display: flex;
   justify-content: center;
   margin-top: 16px;

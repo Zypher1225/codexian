@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 
+import { t } from '@/i18n/i18n';
 import { codexSettingsTabRenderer } from '@/providers/codex/ui/CodexSettingsTab';
 
 const mockGetHostnameKey = jest.fn(() => 'host-a');
@@ -296,8 +297,8 @@ describe('CodexSettingsTab', () => {
 
     codexSettingsTabRenderer.render(createContainer(), createContext(plugin));
 
-    expect(findSetting('Installation method').dropdownComponents).toHaveLength(1);
-    expect(findSetting('WSL distro override').textComponents).toHaveLength(1);
+    expect(findSetting(t('settings.codex.installationMethod.name')).dropdownComponents).toHaveLength(1);
+    expect(findSetting(t('settings.codex.wslDistro.name')).textComponents).toHaveLength(1);
   });
 
   it('hides Windows-only installation controls on non-Windows platforms', () => {
@@ -306,8 +307,8 @@ describe('CodexSettingsTab', () => {
 
     codexSettingsTabRenderer.render(createContainer(), createContext(plugin));
 
-    expect(findOptionalSetting('Installation method')).toBeUndefined();
-    expect(findOptionalSetting('WSL distro override')).toBeUndefined();
+    expect(findOptionalSetting(t('settings.codex.installationMethod.name'))).toBeUndefined();
+    expect(findOptionalSetting(t('settings.codex.wslDistro.name'))).toBeUndefined();
   });
 
   it('uses host-native CLI path behavior on non-Windows even when WSL is saved', async () => {
@@ -336,8 +337,8 @@ describe('CodexSettingsTab', () => {
 
     codexSettingsTabRenderer.render(createContainer(), createContext(plugin));
 
-    const cliPathSetting = findSetting('Codex CLI path (host-a)');
-    expect(cliPathSetting.desc).toBe('Custom path to the local Codex CLI. Leave empty for auto-detection from PATH.');
+    const cliPathSetting = findSetting(t('settings.codex.cliPath.name', { host: 'host-a' }));
+    expect(cliPathSetting.desc).toBe(t('settings.codex.cliPath.descUnix'));
     expect(cliPathSetting.textComponents[0].placeholder).toBe('/usr/local/bin/codex');
 
     await cliPathSetting.textComponents[0].onChangeCallback?.('codex');
@@ -353,10 +354,10 @@ describe('CodexSettingsTab', () => {
 
     codexSettingsTabRenderer.render(createContainer(), createContext(plugin));
 
-    const installationMethodSetting = findSetting('Installation method');
+    const installationMethodSetting = findSetting(t('settings.codex.installationMethod.name'));
     await installationMethodSetting.dropdownComponents[0].onChangeCallback?.('wsl');
 
-    const cliPathSetting = findSetting('Codex CLI path (host-a)');
+    const cliPathSetting = findSetting(t('settings.codex.cliPath.name', { host: 'host-a' }));
     await cliPathSetting.textComponents[0].onChangeCallback?.('codex');
 
     expect(plugin.settings.providerConfigs.codex.installationMethodsByHost).toEqual({
@@ -391,10 +392,10 @@ describe('CodexSettingsTab', () => {
 
     codexSettingsTabRenderer.render(createContainer(), createContext(plugin));
 
-    const installationMethodSetting = findSetting('Installation method');
+    const installationMethodSetting = findSetting(t('settings.codex.installationMethod.name'));
     await installationMethodSetting.dropdownComponents[0].onChangeCallback?.('wsl');
 
-    const cliPathSetting = findSetting('Codex CLI path (host-a)');
+    const cliPathSetting = findSetting(t('settings.codex.cliPath.name', { host: 'host-a' }));
     await cliPathSetting.textComponents[0].onChangeCallback?.('C:\\Users\\me\\AppData\\Roaming\\npm\\codex.exe');
 
     expect(plugin.settings.providerConfigs.codex.installationMethodsByHost).toEqual({

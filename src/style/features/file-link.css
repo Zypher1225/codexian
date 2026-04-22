@@ -1,5 +1,5 @@
 /* Clickable file links that open files in Obsidian */
-.codexian-file-link {
+.claudian-file-link {
   color: var(--text-accent);
   text-decoration: none;
   cursor: pointer;
@@ -7,16 +7,16 @@
   transition: color 0.15s ease;
 }
 
-.codexian-file-link:hover {
+.claudian-file-link:hover {
   color: var(--text-accent-hover);
   text-decoration: underline;
 }
 
 /* File link inside inline code */
-code .codexian-file-link {
+code .claudian-file-link {
   color: var(--text-accent);
 }
 
-code .codexian-file-link:hover {
+code .claudian-file-link:hover {
   color: var(--text-accent-hover);
 }

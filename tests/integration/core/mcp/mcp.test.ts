@@ -133,7 +133,7 @@ describe('MCP Types', () => {
 
 describe('McpStorage', () => {
   describe('parseClipboardConfig', () => {
-    it('should parse full Codex format', () => {
+    it('should parse full Claude Code format', () => {
       const json = JSON.stringify({
         mcpServers: {
           'my-server': { command: 'npx', args: ['server'] },

@@ -1,12 +1,12 @@
 /* Plan Mode - inline cards for EnterPlanMode / ExitPlanMode */
 
-.codexian-plan-approval-inline {
+.claudian-plan-approval-inline {
   font-family: var(--font-monospace);
   font-size: 12px;
   outline: none;
 }
 
-.codexian-plan-inline-title {
+.claudian-plan-inline-title {
   font-weight: 700;
   color: var(--text-muted);
   padding: 6px 10px 0;
@@ -14,7 +14,7 @@
 
 /* ── Plan content preview ────────────────────────── */
 
-.codexian-plan-content-preview {
+.claudian-plan-content-preview {
   max-height: 300px;
   overflow-y: auto;
   margin: 6px 10px 8px;
@@ -27,46 +27,46 @@
   color: var(--text-normal);
 }
 
-.codexian-plan-content-preview::-webkit-scrollbar {
+.claudian-plan-content-preview::-webkit-scrollbar {
   width: 4px;
 }
 
-.codexian-plan-content-preview::-webkit-scrollbar-thumb {
+.claudian-plan-content-preview::-webkit-scrollbar-thumb {
   background: var(--background-modifier-border);
   border-radius: 2px;
 }
 
-.codexian-plan-content-preview p {
+.claudian-plan-content-preview p {
   margin: 0 0 6px;
 }
 
-.codexian-plan-content-preview p:last-child {
+.claudian-plan-content-preview p:last-child {
   margin-bottom: 0;
 }
 
-.codexian-plan-content-preview h1,
-.codexian-plan-content-preview h2,
-.codexian-plan-content-preview h3,
-.codexian-plan-content-preview h4 {
+.claudian-plan-content-preview h1,
+.claudian-plan-content-preview h2,
+.claudian-plan-content-preview h3,
+.claudian-plan-content-preview h4 {
   margin: 8px 0 4px;
   font-size: 13px;
 }
 
-.codexian-plan-content-preview ul,
-.codexian-plan-content-preview ol {
+.claudian-plan-content-preview ul,
+.claudian-plan-content-preview ol {
   margin: 2px 0 6px;
   padding-left: 18px;
 }
 
-.codexian-plan-content-preview li {
+.claudian-plan-content-preview li {
   margin: 0;
 }
 
-.codexian-plan-content-preview code {
+.claudian-plan-content-preview code {
   font-size: 11px;
 }
 
-.codexian-plan-content-text {
+.claudian-plan-content-text {
   white-space: pre-wrap;
   word-break: break-word;
   font-family: var(--font-monospace);
@@ -74,30 +74,30 @@
 
 /* ── Permissions list ──────────────────────────── */
 
-.codexian-plan-permissions {
+.claudian-plan-permissions {
   padding: 4px 10px 8px;
 }
 
-.codexian-plan-permissions-label {
+.claudian-plan-permissions-label {
   color: var(--text-muted);
   font-weight: 600;
   margin-bottom: 4px;
 }
 
-.codexian-plan-permissions-list {
+.claudian-plan-permissions-list {
   margin: 0;
   padding-left: 18px;
   color: var(--text-normal);
   line-height: 1.5;
 }
 
-.codexian-plan-permissions-list li {
+.claudian-plan-permissions-list li {
   margin: 0;
 }
 
 /* ── Plan mode input border ──────────────────────── */
 
-.codexian-input-wrapper.codexian-input-plan-mode {
+.claudian-input-wrapper.claudian-input-plan-mode {
   border-color: rgb(92, 148, 140) !important;
   box-shadow: 0 0 0 1px rgb(92, 148, 140);
 }
