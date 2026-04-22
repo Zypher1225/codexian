@@ -1,63 +1,65 @@
 # Codexian
 
+简体中文 | [English](docs/README.en.md)
+
 ![GitHub stars](https://img.shields.io/github/stars/zypher1225/codexian?style=social)
 ![GitHub release](https://img.shields.io/github/v/release/zypher1225/codexian)
 ![License](https://img.shields.io/github/license/zypher1225/codexian)
 
 ![Preview](Preview.png)
 
-Codexian embeds the local Codex CLI inside Obsidian. Your vault becomes Codex's working directory, so the agent can read notes, edit files, search the vault, run terminal commands, use skills and subagents, and carry multi-step coding or writing workflows without leaving Obsidian.
+Codexian 是一个 Obsidian 桌面端插件，用来把本地 Codex CLI 嵌入到你的 vault 里。启用后，Codex 可以把当前 vault 当作工作目录，在 Obsidian 侧边栏中聊天、阅读笔记、编辑文件、搜索项目、运行终端命令、使用 Skills 和 Subagents，并完成多步骤的写作或开发任务。
 
-## Features & Usage
+## 功能与用法
 
-Open the Codexian chat sidebar from the ribbon icon or command palette. Select text and use the inline edit command to revise notes with a word-level diff preview. Chat sessions run through your local `codex` installation and use the same Codex configuration, credentials, MCP setup, and session storage you already use in the CLI.
+从左侧 ribbon 图标或命令面板打开 Codexian 聊天侧边栏。你也可以选中笔记内容后使用内联编辑命令，让 Codex 直接改写当前笔记，并在应用前查看词级 diff。聊天会通过你本机已安装的 `codex` 运行，复用 Codex CLI 的登录状态、配置、MCP、Skills、Subagents 和会话存储。
 
-**Local Codex CLI runtime** - Uses `codex app-server` over stdio JSON-RPC, with startup handshakes, streaming turn events, approval gates, and resumable sessions.
+**本地 Codex CLI 运行时** - 使用 `codex app-server` 和 stdio JSON-RPC 通信，支持启动握手、流式响应、审批请求、可恢复会话等能力。
 
-**Vault-native agent workspace** - The active vault is the working directory for Codex, so file read/write, search, bash, and multi-step workflows operate on your notes and project files.
+**Vault 原生工作目录** - 当前 Obsidian vault 就是 Codex 的工作目录，因此读写文件、搜索、bash 命令和多步骤任务都围绕你的笔记和项目文件执行。
 
-**Inline Edit** - Select text or start at the cursor position, then ask Codex to rewrite or insert directly in notes with a diff review before applying.
+**内联编辑** - 选中文本或把光标放在目标位置，让 Codex 插入、改写、润色或重构内容，并在应用前查看差异。
 
-**Slash Commands & Skills** - Type `/` or `$` for reusable prompt templates and Codex skills from user and vault scopes.
+**Slash Commands 与 Skills** - 输入 `/` 或 `$` 调用可复用的 prompt 模板和 Codex Skills，支持用户级和 vault 级作用域。
 
-**`@mention` context** - Mention vault files, external files, MCP servers, and subagents so Codex can work with explicit context.
+**`@mention` 上下文** - 通过 `@` 明确提及 vault 文件、外部文件、MCP 服务器和 subagents，让 Codex 带着指定上下文工作。
 
-**Plan Mode** - Toggle via `Shift+Tab` when you want Codex to explore and propose before making changes.
+**Plan Mode** - 通过 `Shift+Tab` 切换计划模式，让 Codex 先探索和提出方案，再执行修改。
 
-**MCP & Subagents** - Codexian surfaces Codex-managed MCP tools, skills, and subagents in Obsidian while leaving the underlying configuration in Codex's own CLI-managed locations.
+**MCP 与 Subagents** - 在 Obsidian UI 中展示和使用 Codex 管理的 MCP 工具、Skills 与 Subagents，同时保留 Codex CLI 原本的配置方式。
 
-**Multi-Tab Conversations** - Run multiple chat tabs, preserve conversation metadata, fork, resume, compact, and continue prior Codex sessions.
+**多标签会话** - 支持多个聊天标签、会话元数据、fork、resume、compact，以及继续历史 Codex 会话。
 
-## Requirements
+## 环境要求
 
-- [Codex CLI](https://github.com/openai/codex) installed and authenticated.
-- Obsidian v1.4.5 or newer.
-- Desktop Obsidian only: macOS, Linux, or Windows.
+- 已安装并登录 [Codex CLI](https://github.com/openai/codex)。
+- Obsidian v1.4.5 或更高版本。
+- 仅支持桌面端 Obsidian：macOS、Linux、Windows。
 
-## Installation
+## 安装
 
-### From GitHub Release
+### 从 GitHub Release 安装
 
-1. Download `main.js`, `manifest.json`, and `styles.css` from the [latest release](https://github.com/zypher1225/codexian/releases/latest).
-2. Create this folder in your vault:
+1. 从 [latest release](https://github.com/zypher1225/codexian/releases/latest) 下载 `main.js`、`manifest.json` 和 `styles.css`。
+2. 在你的 vault 中创建插件目录：
    ```bash
    /path/to/vault/.obsidian/plugins/codexian/
    ```
-3. Copy the downloaded files into that folder.
-4. Enable Codexian in Obsidian:
-   Settings -> Community plugins -> Codexian.
+3. 把三个文件复制到 `codexian` 文件夹中。
+4. 在 Obsidian 中启用插件：
+   Settings -> Community plugins -> Codexian。
 
-### Using BRAT
+### 使用 BRAT 安装
 
-1. Install [BRAT](https://github.com/TfTHacker/obsidian42-brat).
-2. Open BRAT settings and choose "Add Beta plugin".
-3. Enter:
+1. 安装 [BRAT](https://github.com/TfTHacker/obsidian42-brat)。
+2. 打开 BRAT 设置，选择 "Add Beta plugin"。
+3. 输入仓库地址：
    ```text
    https://github.com/zypher1225/codexian
    ```
-4. Enable Codexian in Obsidian.
+4. 在 Obsidian 中启用 Codexian。
 
-### From Source
+### 从源码安装
 
 ```bash
 cd /path/to/vault/.obsidian/plugins
@@ -67,58 +69,58 @@ npm install
 npm run build
 ```
 
-For development, set `OBSIDIAN_VAULT` in `.env.local` and run:
+开发时可以在 `.env.local` 中设置 `OBSIDIAN_VAULT`，然后运行：
 
 ```bash
 npm run dev
 ```
 
-Built files are copied to `.obsidian/plugins/codexian/` automatically when `OBSIDIAN_VAULT` points at a valid vault.
+当 `OBSIDIAN_VAULT` 指向有效 vault 时，构建产物会自动复制到 `.obsidian/plugins/codexian/`。
 
-## Codex CLI Setup
+## Codex CLI 配置
 
-Codexian auto-detects `codex` from `PATH`. If Obsidian cannot find it, set the explicit path in Codexian settings.
+Codexian 会默认从 `PATH` 自动查找 `codex`。如果 Obsidian 找不到 Codex CLI，可以在 Codexian 设置中填写明确路径。
 
-| Platform | Command | Example path |
+| 平台 | 查询命令 | 示例路径 |
 | --- | --- | --- |
 | macOS/Linux | `which codex` | `/Users/you/.local/bin/codex` |
-| Windows native | `where.exe codex` | `C:\Users\you\AppData\Roaming\npm\codex.exe` |
-| Windows WSL | `which codex` inside WSL | `/home/you/.local/bin/codex` |
+| Windows 原生 | `where.exe codex` | `C:\Users\you\AppData\Roaming\npm\codex.exe` |
+| Windows WSL | 在 WSL 中执行 `which codex` | `/home/you/.local/bin/codex` |
 
-GUI apps often receive a smaller `PATH` than your terminal. If Codexian shows `spawn codex ENOENT`, either set the CLI path directly or add your Node/Codex bin directory in Settings -> Environment.
+GUI 应用拿到的 `PATH` 经常比终端少。如果 Codexian 显示 `spawn codex ENOENT`，请直接设置 Codex CLI 路径，或在 Settings -> Environment 中添加 Node/Codex 的 bin 目录。
 
-## Privacy & Data Use
+## 隐私与数据
 
-- **Sent to API**: Your prompts, selected note text, attached files/images, and tool outputs are sent according to your Codex/OpenAI configuration.
-- **Local storage**: Codexian stores plugin settings and session metadata in the vault plugin data area and Codex sessions in the normal Codex CLI session store.
-- **No telemetry**: Codexian does not add analytics or tracking.
+- **会发送到 API 的内容**：你的提示词、选中的笔记文本、附加文件/图片、工具调用输出等，具体取决于你的 Codex/OpenAI 配置。
+- **本地存储**：Codexian 会在 vault 插件数据区保存插件设置和会话元数据；Codex 会话仍保存在 Codex CLI 默认的会话目录。
+- **无遥测**：Codexian 不添加分析、追踪或额外遥测。
 
-## Architecture
+## 架构
 
 ```text
 src/
-├── main.ts                      # Obsidian plugin entry point
-├── app/                         # Shared defaults and plugin-level storage
-├── core/                        # Provider-neutral runtime, registry, storage, tools, prompts
-│   ├── runtime/                 # ChatRuntime interface and approval flow contracts
-│   ├── providers/               # Provider registry, model routing, environment handling
-│   ├── security/                # Approval utilities
-│   └── ...                      # commands, MCP, storage, tool metadata, shared types
+├── main.ts                      # Obsidian 插件入口
+├── app/                         # 默认设置与插件级存储
+├── core/                        # provider-neutral runtime、registry、storage、tools、prompts
+│   ├── runtime/                 # ChatRuntime 接口与审批流契约
+│   ├── providers/               # Provider registry、模型路由、环境变量处理
+│   ├── security/                # 审批工具
+│   └── ...                      # commands、MCP、storage、tool metadata、共享类型
 ├── providers/
-│   └── codex/                   # Codex app-server adaptor, JSON-RPC transport, JSONL history
+│   └── codex/                   # Codex app-server adaptor、JSON-RPC transport、JSONL history
 ├── features/
-│   ├── chat/                    # Sidebar chat, tabs, renderers, rewind/fork state
-│   ├── inline-edit/             # Inline edit modal and Codex-backed edit service
-│   └── settings/                # Settings UI and provider tabs
-├── shared/                      # Reusable UI components, mention dropdowns, modals
-├── i18n/                        # Locale strings
-├── utils/                       # Cross-cutting utilities
-└── style/                       # Modular CSS compiled to styles.css
+│   ├── chat/                    # 侧边栏聊天、tabs、renderers、rewind/fork 状态
+│   ├── inline-edit/             # 内联编辑 modal 与 Codex 编辑服务
+│   └── settings/                # 设置界面与 provider tabs
+├── shared/                      # 复用 UI 组件、mention dropdowns、modals
+├── i18n/                        # 多语言文本
+├── utils/                       # 跨模块工具
+└── style/                       # 模块化 CSS，编译为 styles.css
 ```
 
-The Codex runtime uses `codex app-server` rather than a plain one-shot shell command. That gives Codexian richer streaming events, approval request handling, resumable threads, skill discovery, subagent metadata, image handling, and JSONL-backed tool rendering.
+Codexian 使用 `codex app-server`，而不是简单执行一次性的 shell 命令。这样可以获得更完整的流式事件、审批请求处理、可恢复线程、Skills 发现、Subagents 元数据、图片处理，以及基于 JSONL 会话文件的工具渲染。
 
-## Development
+## 开发
 
 ```bash
 npm install
@@ -128,11 +130,11 @@ npm test
 npm run build
 ```
 
-## Acknowledgments
+## 致谢
 
-Codexian is architected from the excellent Obsidian agent-plugin foundation in [YishenTu/claudian](https://github.com/YishenTu/claudian), refocused around local Codex CLI as the default and primary provider.
+Codexian 的架构来自优秀的 Obsidian agent 插件基础项目 [YishenTu/claudian](https://github.com/YishenTu/claudian)，并在此基础上将本地 Codex CLI 作为默认和主要 provider。
 
-Thanks to [Obsidian](https://obsidian.md) for the plugin API and [OpenAI](https://openai.com) for [Codex](https://github.com/openai/codex).
+感谢 [Obsidian](https://obsidian.md) 提供插件 API，感谢 [OpenAI](https://openai.com) 提供 [Codex](https://github.com/openai/codex)。
 
 ## License
 
