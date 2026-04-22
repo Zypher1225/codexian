@@ -5,7 +5,7 @@ patchSetMaxListenersForElectron();
 import './providers';
 
 import type { Editor } from 'obsidian';
-import { MarkdownView, Notice, Plugin } from 'obsidian';
+import { addIcon, MarkdownView, Notice, Plugin } from 'obsidian';
 
 import { DEFAULT_CLAUDIAN_SETTINGS } from './app/settings/defaultSettings';
 import { SharedStorageService } from './app/storage/SharedStorageService';
@@ -34,10 +34,13 @@ import type { EnvironmentScope } from './core/types/settings';
 import { ClaudianView } from './features/chat/ClaudianView';
 import { type InlineEditContext, InlineEditModal } from './features/inline-edit/ui/InlineEditModal';
 import { ClaudianSettingTab } from './features/settings/ClaudianSettings';
-import { setLocale } from './i18n/i18n';
+import { setLocale, t } from './i18n/i18n';
 import type { Locale } from './i18n/types';
 import { buildCursorContext } from './utils/editor';
 import { getVaultPath } from './utils/path';
+
+const CODEXIAN_ICON_ID = 'codexian-openai';
+const CODEXIAN_ICON_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" d="M6.137 5.824v-1.52c0-.128.047-.224.158-.288l3.03-1.76c.411-.24.903-.352 1.41-.352c1.903 0 3.108 1.488 3.108 3.072c0 .112 0 .24-.016.368l-3.14-1.856a.53.53 0 0 0-.57 0zm7.072 5.92V8.112a.54.54 0 0 0-.285-.496L8.944 5.28l1.3-.752a.29.29 0 0 1 .317 0l3.029 1.76c.872.512 1.458 1.6 1.458 2.656c0 1.216-.713 2.336-1.839 2.8m-8.008-3.2l-1.3-.768c-.111-.064-.159-.16-.159-.288v-3.52c0-1.712 1.3-3.008 3.06-3.008a2.95 2.95 0 0 1 1.809.624L5.487 3.408a.54.54 0 0 0-.286.496zM8 10.176L6.137 9.12V6.88L8 5.824L9.863 6.88v2.24zm1.197 4.864a2.95 2.95 0 0 1-1.808-.624l3.124-1.824a.54.54 0 0 0 .286-.496v-4.64l1.316.768c.11.064.158.16.158.288v3.52c0 1.712-1.316 3.008-3.076 3.008M5.44 11.472l-3.03-1.76C1.538 9.2.951 8.112.951 7.056c0-1.232.73-2.336 1.856-2.8v3.648c0 .224.095.384.285.496l3.964 2.32l-1.3.752a.29.29 0 0 1-.317 0m-.174 2.624c-1.792 0-3.108-1.36-3.108-3.04c0-.128.015-.256.031-.384l3.124 1.824q.285.168.571 0l3.98-2.32v1.52c0 .128-.047.224-.158.288l-3.03 1.76c-.412.24-.903.352-1.41.352M9.197 16c1.919 0 3.52-1.376 3.885-3.2C14.858 12.336 16 10.656 16 8.944c0-1.12-.476-2.208-1.332-2.992a4.4 4.4 0 0 0 .127-1.008c0-2.288-1.84-4-3.964-4c-.428 0-.84.064-1.253.208A3.96 3.96 0 0 0 6.803 0c-1.919 0-3.52 1.376-3.885 3.2C1.142 3.664 0 5.344 0 7.056c0 1.12.476 2.208 1.332 2.992a4.4 4.4 0 0 0-.127 1.008c0 2.288 1.84 4 3.964 4c.429 0 .84-.064 1.253-.208A3.96 3.96 0 0 0 9.197 16"/></svg>';
 
 export default class ClaudianPlugin extends Plugin {
   settings!: ClaudianSettings;
@@ -48,19 +51,22 @@ export default class ClaudianPlugin extends Plugin {
   async onload() {
     await this.loadSettings();
     await ProviderWorkspaceRegistry.initializeAll(this);
+    if (typeof addIcon === 'function') {
+      addIcon(CODEXIAN_ICON_ID, CODEXIAN_ICON_SVG);
+    }
 
     this.registerView(
       VIEW_TYPE_CLAUDIAN,
       (leaf) => new ClaudianView(leaf, this)
     );
 
-    this.addRibbonIcon('bot', 'Open Claudian', () => {
+    this.addRibbonIcon(CODEXIAN_ICON_ID, t('commands.openView'), () => {
       this.activateView();
     });
 
     this.addCommand({
       id: 'open-view',
-      name: 'Open chat view',
+      name: t('commands.openView'),
       callback: () => {
         this.activateView();
       },
@@ -68,7 +74,7 @@ export default class ClaudianPlugin extends Plugin {
 
     this.addCommand({
       id: 'inline-edit',
-      name: 'Inline edit',
+      name: t('commands.inlineEdit'),
       editorCallback: async (editor: Editor, ctx) => {
         const view = ctx instanceof MarkdownView
           ? ctx
@@ -114,7 +120,7 @@ export default class ClaudianPlugin extends Plugin {
 
     this.addCommand({
       id: 'new-tab',
-      name: 'New tab',
+      name: t('commands.newTab'),
       checkCallback: (checking: boolean) => {
         if (!this.canCreateNewTab()) return false;
 
@@ -127,7 +133,7 @@ export default class ClaudianPlugin extends Plugin {
 
     this.addCommand({
       id: 'new-session',
-      name: 'New session (in current tab)',
+      name: t('commands.newSession'),
       checkCallback: (checking: boolean) => {
         const leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE_CLAUDIAN)[0];
         if (!leaf) return false;
@@ -150,7 +156,7 @@ export default class ClaudianPlugin extends Plugin {
 
     this.addCommand({
       id: 'close-current-tab',
-      name: 'Close current tab',
+      name: t('commands.closeCurrentTab'),
       checkCallback: (checking: boolean) => {
         const leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE_CLAUDIAN)[0];
         if (!leaf) return false;

@@ -6,7 +6,10 @@ import type {
   ConversationMeta,
   SessionMetadata,
 } from '../types';
-import { LEGACY_SESSIONS_PATH, SESSIONS_PATH } from './StoragePaths';
+import {
+  LEGACY_SESSIONS_PATH,
+  SESSIONS_PATH,
+} from './StoragePaths';
 
 export {
   LEGACY_SESSIONS_PATH,
@@ -142,6 +145,7 @@ export class SessionStorage {
     if (await this.adapter.exists(legacyFilePath)) {
       await this.adapter.delete(legacyFilePath);
     }
+
   }
 
   private async listUniqueMetadataFiles(): Promise<string[]> {

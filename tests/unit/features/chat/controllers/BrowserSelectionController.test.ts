@@ -12,11 +12,11 @@ function createMockContextRow(browserIndicator: HTMLElement) {
   const fileIndicator = { style: { display: 'none' } };
   const imagePreview = { style: { display: 'none' } };
   const elements: Record<string, any> = {
-    '.claudian-selection-indicator': { style: { display: 'none' } },
-    '.claudian-browser-selection-indicator': browserIndicator,
-    '.claudian-canvas-indicator': { style: { display: 'none' } },
-    '.claudian-file-indicator': fileIndicator,
-    '.claudian-image-preview': imagePreview,
+    '.codexian-selection-indicator': { style: { display: 'none' } },
+    '.codexian-browser-selection-indicator': browserIndicator,
+    '.codexian-canvas-indicator': { style: { display: 'none' } },
+    '.codexian-file-indicator': fileIndicator,
+    '.codexian-image-preview': imagePreview,
   };
 
   return {

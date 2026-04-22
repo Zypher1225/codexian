@@ -94,7 +94,7 @@ class CodexSubagentModal extends Modal {
 
   onOpen() {
     this.setTitle(this.existing ? 'Edit Codex Subagent' : 'Add Codex Subagent');
-    this.modalEl.addClass('claudian-sp-modal');
+    this.modalEl.addClass('codexian-sp-modal');
 
     const { contentEl } = this;
 
@@ -117,10 +117,10 @@ class CodexSubagentModal extends Modal {
       });
 
     // Advanced options
-    const details = contentEl.createEl('details', { cls: 'claudian-sp-advanced-section' });
+    const details = contentEl.createEl('details', { cls: 'codexian-sp-advanced-section' });
     details.createEl('summary', {
       text: 'Advanced options',
-      cls: 'claudian-sp-advanced-summary',
+      cls: 'codexian-sp-advanced-summary',
     });
     if (
       this.existing?.model ||
@@ -176,7 +176,7 @@ class CodexSubagentModal extends Modal {
       .setDesc('Core instructions that define the agent\'s behavior');
 
     const instructionsArea = contentEl.createEl('textarea', {
-      cls: 'claudian-sp-content-area',
+      cls: 'codexian-sp-content-area',
       attr: {
         rows: '10',
         placeholder: 'Review code like an owner.\nPrioritize correctness, security, and missing test coverage.',
@@ -248,17 +248,17 @@ class CodexSubagentModal extends Modal {
     };
     this._triggerSave = doSave;
 
-    const buttonContainer = contentEl.createDiv({ cls: 'claudian-sp-modal-buttons' });
+    const buttonContainer = contentEl.createDiv({ cls: 'codexian-sp-modal-buttons' });
 
     const cancelBtn = buttonContainer.createEl('button', {
       text: 'Cancel',
-      cls: 'claudian-cancel-btn',
+      cls: 'codexian-cancel-btn',
     });
     cancelBtn.addEventListener('click', () => this.close());
 
     const saveBtn = buttonContainer.createEl('button', {
       text: 'Save',
-      cls: 'claudian-save-btn',
+      cls: 'codexian-save-btn',
     });
     saveBtn.addEventListener('click', doSave);
   }
@@ -292,65 +292,65 @@ export class CodexSubagentSettings {
       this.agents = [];
     }
 
-    const headerEl = this.containerEl.createDiv({ cls: 'claudian-sp-header' });
-    headerEl.createSpan({ text: 'Codex Subagents', cls: 'claudian-sp-label' });
+    const headerEl = this.containerEl.createDiv({ cls: 'codexian-sp-header' });
+    headerEl.createSpan({ text: 'Codex Subagents', cls: 'codexian-sp-label' });
 
-    const actionsEl = headerEl.createDiv({ cls: 'claudian-sp-header-actions' });
+    const actionsEl = headerEl.createDiv({ cls: 'codexian-sp-header-actions' });
 
     const refreshBtn = actionsEl.createEl('button', {
-      cls: 'claudian-settings-action-btn',
+      cls: 'codexian-settings-action-btn',
       attr: { 'aria-label': 'Refresh' },
     });
     setIcon(refreshBtn, 'refresh-cw');
     refreshBtn.addEventListener('click', () => { void this.render(); });
 
     const addBtn = actionsEl.createEl('button', {
-      cls: 'claudian-settings-action-btn',
+      cls: 'codexian-settings-action-btn',
       attr: { 'aria-label': 'Add' },
     });
     setIcon(addBtn, 'plus');
     addBtn.addEventListener('click', () => this.openModal(null));
 
     if (this.agents.length === 0) {
-      const emptyEl = this.containerEl.createDiv({ cls: 'claudian-sp-empty-state' });
+      const emptyEl = this.containerEl.createDiv({ cls: 'codexian-sp-empty-state' });
       emptyEl.setText('No Codex subagents in vault. Click + to create one.');
       return;
     }
 
-    const listEl = this.containerEl.createDiv({ cls: 'claudian-sp-list' });
+    const listEl = this.containerEl.createDiv({ cls: 'codexian-sp-list' });
     for (const agent of this.agents) {
       this.renderItem(listEl, agent);
     }
   }
 
   private renderItem(listEl: HTMLElement, agent: CodexSubagentDefinition): void {
-    const itemEl = listEl.createDiv({ cls: 'claudian-sp-item' });
-    const infoEl = itemEl.createDiv({ cls: 'claudian-sp-info' });
+    const itemEl = listEl.createDiv({ cls: 'codexian-sp-item' });
+    const infoEl = itemEl.createDiv({ cls: 'codexian-sp-info' });
 
-    const headerRow = infoEl.createDiv({ cls: 'claudian-sp-item-header' });
-    const nameEl = headerRow.createSpan({ cls: 'claudian-sp-item-name' });
+    const headerRow = infoEl.createDiv({ cls: 'codexian-sp-item-header' });
+    const nameEl = headerRow.createSpan({ cls: 'codexian-sp-item-name' });
     nameEl.setText(agent.name);
 
     if (agent.model) {
-      headerRow.createSpan({ text: agent.model, cls: 'claudian-slash-item-badge' });
+      headerRow.createSpan({ text: agent.model, cls: 'codexian-slash-item-badge' });
     }
 
     if (agent.description) {
-      const descEl = infoEl.createDiv({ cls: 'claudian-sp-item-desc' });
+      const descEl = infoEl.createDiv({ cls: 'codexian-sp-item-desc' });
       descEl.setText(agent.description);
     }
 
-    const actionsEl = itemEl.createDiv({ cls: 'claudian-sp-item-actions' });
+    const actionsEl = itemEl.createDiv({ cls: 'codexian-sp-item-actions' });
 
     const editBtn = actionsEl.createEl('button', {
-      cls: 'claudian-settings-action-btn',
+      cls: 'codexian-settings-action-btn',
       attr: { 'aria-label': 'Edit' },
     });
     setIcon(editBtn, 'pencil');
     editBtn.addEventListener('click', () => this.openModal(agent));
 
     const deleteBtn = actionsEl.createEl('button', {
-      cls: 'claudian-settings-action-btn claudian-settings-delete-btn',
+      cls: 'codexian-settings-action-btn codexian-settings-delete-btn',
       attr: { 'aria-label': 'Delete' },
     });
     setIcon(deleteBtn, 'trash-2');

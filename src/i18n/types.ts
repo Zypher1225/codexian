@@ -1,4 +1,4 @@
-export type Locale = 'en' | 'zh-CN' | 'zh-TW' | 'ja' | 'ko' | 'de' | 'fr' | 'es' | 'ru' | 'pt';
+export type Locale = 'en' | 'zh-CN';
 
 export type TranslationKey =
   // Common UI elements
@@ -22,6 +22,13 @@ export type TranslationKey =
   | 'common.platform'
   | 'common.refresh'
   | 'common.rewind'
+
+  // Commands
+  | 'commands.openView'
+  | 'commands.inlineEdit'
+  | 'commands.newTab'
+  | 'commands.newSession'
+  | 'commands.closeCurrentTab'
 
   // Chat - Rewind
   | 'chat.rewind.confirmMessage'

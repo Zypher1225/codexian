@@ -47,7 +47,7 @@ describe('ClaudianSettingsStorage', () => {
       expect(mockAdapter.read).not.toHaveBeenCalled();
     });
 
-    it('loads legacy .claude settings and migrates them to .claudian', async () => {
+    it('loads legacy .claude settings and migrates them to .codexian', async () => {
       mockAdapter.exists.mockImplementation(async (path: string) => (
         path === LEGACY_CLAUDIAN_SETTINGS_PATH
       ));

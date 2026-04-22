@@ -5,7 +5,7 @@ import { isValidMcpServerConfig } from '../types';
  * Parse pasted JSON (supports multiple formats).
  *
  * Formats supported:
- * 1. Full Claude Code format: { "mcpServers": { "name": {...} } }
+ * 1. Full Codex format: { "mcpServers": { "name": {...} } }
  * 2. Single server with name: { "name": { "command": "..." } }
  * 3. Single server without name: { "command": "..." }
  * 4. Multiple named servers: { "server1": {...}, "server2": {...} }
@@ -18,7 +18,7 @@ export function parseClipboardConfig(json: string): ParsedMcpConfig {
       throw new Error('Invalid JSON object');
     }
 
-    // Format 1: Full Claude Code format
+    // Format 1: Full Codex format
     // { "mcpServers": { "server-name": { "command": "...", ... } } }
     if (parsed.mcpServers && typeof parsed.mcpServers === 'object') {
       const servers: Array<{ name: string; config: McpServerConfig }> = [];
