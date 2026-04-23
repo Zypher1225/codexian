@@ -38,18 +38,25 @@ Open the Codexian chat sidebar from the ribbon icon or command palette. Select t
 
 ## Installation
 
-### From GitHub Release
+### Recommended: manual install from GitHub Release
 
 1. Download `main.js`, `manifest.json`, and `styles.css` from the [latest release](https://github.com/zypher1225/codexian/releases/latest).
-2. Create this folder in your vault:
+2. Create this folder in your Obsidian vault. The folder name must be `codexian`:
    ```bash
    /path/to/vault/.obsidian/plugins/codexian/
    ```
 3. Copy the downloaded files into that folder.
-4. Enable Codexian in Obsidian:
-   Settings -> Community plugins -> Codexian.
+4. Restart Obsidian and open Settings -> Community plugins.
+5. If Restricted mode is enabled, turn it off.
+6. Enable Codexian.
 
-### Using BRAT
+After installation, if Codexian cannot launch Codex, first verify that `codex` works in your terminal:
+
+```bash
+codex --version
+```
+
+### Optional: using BRAT
 
 1. Install [BRAT](https://github.com/TfTHacker/obsidian42-brat).
 2. Open BRAT settings and choose "Add Beta plugin".
@@ -59,7 +66,7 @@ Open the Codexian chat sidebar from the ribbon icon or command palette. Select t
    ```
 4. Enable Codexian in Obsidian.
 
-### From Source
+### Developer install from source
 
 ```bash
 cd /path/to/vault/.obsidian/plugins
