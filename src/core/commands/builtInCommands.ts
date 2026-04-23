@@ -34,26 +34,29 @@ export interface BuiltInCommandResult {
 export const BUILT_IN_COMMANDS: BuiltInCommand[] = [
   {
     name: 'clear',
-    aliases: ['new'],
-    description: 'Start a new conversation',
+    aliases: ['new', '清空', '新会话'],
+    description: '开始一个新对话',
     action: 'clear',
   },
   {
     name: 'add-dir',
-    description: 'Add external context directory',
+    aliases: ['添加目录'],
+    description: '添加外部上下文目录',
     action: 'add-dir',
     hasArgs: true,
-    argumentHint: '[path/to/directory]',
+    argumentHint: '[目录路径]',
   },
   {
     name: 'resume',
-    description: 'Resume a previous conversation',
+    aliases: ['恢复会话'],
+    description: '恢复之前的对话',
     action: 'resume',
     requiredCapability: 'supportsNativeHistory',
   },
   {
     name: 'fork',
-    description: 'Fork entire conversation to new session',
+    aliases: ['分叉会话'],
+    description: '把当前对话分叉为新会话',
     action: 'fork',
     requiredCapability: 'supportsFork',
   },
@@ -106,7 +109,7 @@ export function detectBuiltInCommand(input: string): BuiltInCommandResult | null
   if (!trimmed.startsWith('/')) return null;
 
   // Extract command name (first word after /)
-  const match = trimmed.match(/^\/([a-zA-Z0-9_-]+)(?:\s(.*))?$/);
+  const match = trimmed.match(/^\/([\p{L}\p{N}_-]+)(?:\s(.*))?$/u);
   if (!match) return null;
 
   const cmdName = match[1].toLowerCase();

@@ -108,6 +108,14 @@ describe('ClaudianPlugin', () => {
       });
     });
 
+    it('should add command to initialize knowledge base IDE', async () => {
+      await plugin.onload();
+
+      const command = getRegisteredCommand('initialize-knowledge-base');
+      expect(command.name).toBe('初始化知识库 IDE');
+      expect(command.callback).toEqual(expect.any(Function));
+    });
+
   });
 
   describe('onunload', () => {

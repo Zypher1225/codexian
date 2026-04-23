@@ -8,27 +8,23 @@
 
 ![Preview](../Preview.png)
 
-Codexian embeds the local Codex CLI inside Obsidian. Your vault becomes Codex's working directory, so the agent can read notes, edit files, search the vault, run terminal commands, use skills and subagents, and carry multi-step coding or writing workflows without leaving Obsidian.
+Codexian embeds the local Codex CLI inside Obsidian. Your vault becomes Codex's working directory, so the agent can read notes, edit files, search the vault, run terminal commands, use skills and subagents, and carry multi-step writing, research, or development workflows without leaving Obsidian.
 
-## Features & Usage
+The Chinese README is the primary guide for now. This page mirrors the essential installation and usage flow.
 
-Open the Codexian chat sidebar from the ribbon icon or command palette. Select text and use the inline edit command to revise notes with a word-level diff preview. Chat sessions run through your local `codex` installation and use the same Codex configuration, credentials, MCP setup, and session storage you already use in the CLI.
+## Features
 
 **Local Codex CLI runtime** - Uses `codex app-server` over stdio JSON-RPC, with startup handshakes, streaming turn events, approval gates, and resumable sessions.
 
-**Vault-native agent workspace** - The active vault is the working directory for Codex, so file read/write, search, bash, and multi-step workflows operate on your notes and project files.
+**Vault-native workspace** - The active vault is the working directory for Codex, so file read/write, search, bash, and multi-step workflows operate on your notes and project files.
+
+**Knowledge base IDE initialization** - Run `Codexian: 初始化知识库 IDE` from the Obsidian command palette to create a safe starter structure, templates, indexes, and vault-local Codex skills. Existing files are skipped, not overwritten.
 
 **Inline Edit** - Select text or start at the cursor position, then ask Codex to rewrite or insert directly in notes with a diff review before applying.
 
-**Slash Commands & Skills** - Type `/` or `$` for reusable prompt templates and Codex skills from user and vault scopes.
+**Commands & Skills** - Type `/` to invoke vault-local Codex skills and common commands.
 
 **`@mention` context** - Mention vault files, external files, MCP servers, and subagents so Codex can work with explicit context.
-
-**Plan Mode** - Toggle via `Shift+Tab` when you want Codex to explore and propose before making changes.
-
-**MCP & Subagents** - Codexian surfaces Codex-managed MCP tools, skills, and subagents in Obsidian while leaving the underlying configuration in Codex's own CLI-managed locations.
-
-**Multi-Tab Conversations** - Run multiple chat tabs, preserve conversation metadata, fork, resume, compact, and continue prior Codex sessions.
 
 ## Requirements
 
@@ -36,96 +32,87 @@ Open the Codexian chat sidebar from the ribbon icon or command palette. Select t
 - Obsidian v1.4.5 or newer.
 - Desktop Obsidian only: macOS, Linux, or Windows.
 
-## Installation
-
-### Recommended: manual install from GitHub Release
-
-1. Download `main.js`, `manifest.json`, and `styles.css` from the [latest release](https://github.com/zypher1225/codexian/releases/latest).
-2. Create this folder in your Obsidian vault. The folder name must be `codexian`:
-   ```bash
-   /path/to/vault/.obsidian/plugins/codexian/
-   ```
-3. Copy the downloaded files into that folder.
-4. Restart Obsidian and open Settings -> Community plugins.
-5. If Restricted mode is enabled, turn it off.
-6. Enable Codexian.
-
-After installation, if Codexian cannot launch Codex, first verify that `codex` works in your terminal:
+Verify Codex first:
 
 ```bash
 codex --version
 ```
 
-### Optional: using BRAT
+If needed, authenticate:
 
-1. Install [BRAT](https://github.com/TfTHacker/obsidian42-brat).
-2. Open BRAT settings and choose "Add Beta plugin".
-3. Enter:
-   ```text
-   https://github.com/zypher1225/codexian
+```bash
+codex login
+```
+
+## Installation
+
+### Recommended: ask Codex CLI to install it
+
+1. Download these three files from the [latest release](https://github.com/zypher1225/codexian/releases/latest):
+   - `main.js`
+   - `manifest.json`
+   - `styles.css`
+2. Put them in one local folder, for example:
+   ```bash
+   ~/Downloads/codexian-release/
    ```
-4. Enable Codexian in Obsidian.
+3. Run this in your terminal and adjust the download folder if needed:
+   ```bash
+   codex "Please install the Codexian Obsidian plugin for me. The plugin files are in ~/Downloads/codexian-release and should include main.js, manifest.json, and styles.css. First find or ask for my Obsidian vault path, then copy only these three files into <vault>/.obsidian/plugins/codexian/. Do not delete or overwrite my notes. After copying, verify the files exist and remind me to turn off Restricted mode in Obsidian Settings -> Community plugins, then enable Codexian."
+   ```
+4. Restart Obsidian.
+5. Open `Settings -> Community plugins`.
+6. Turn off `Restricted mode` if it is enabled.
+7. Enable `Codexian`.
 
-### Developer install from source
+### Manual install
 
-```bash
-cd /path/to/vault/.obsidian/plugins
-git clone https://github.com/zypher1225/codexian.git
-cd codexian
-npm install
-npm run build
-```
+1. Download `main.js`, `manifest.json`, and `styles.css` from the [latest release](https://github.com/zypher1225/codexian/releases/latest).
+2. Find your vault path. The vault is the folder that contains `.obsidian`:
+   ```bash
+   find "$HOME" -name ".obsidian" -type d 2>/dev/null
+   ```
+3. Copy the files. Change `VAULT` and `RELEASE_DIR` to your paths:
+   ```bash
+   VAULT="/Users/you/Brain"
+   RELEASE_DIR="$HOME/Downloads/codexian-release"
+   PLUGIN_DIR="$VAULT/.obsidian/plugins/codexian"
 
-For development, set `OBSIDIAN_VAULT` in `.env.local` and run:
+   mkdir -p "$PLUGIN_DIR"
+   cp "$RELEASE_DIR/main.js" "$RELEASE_DIR/manifest.json" "$RELEASE_DIR/styles.css" "$PLUGIN_DIR/"
+   ls -la "$PLUGIN_DIR"
+   ```
+4. Restart Obsidian.
+5. Open `Settings -> Community plugins`.
+6. Turn off `Restricted mode`.
+7. Enable `Codexian`.
 
-```bash
-npm run dev
-```
+## First Run
 
-Built files are copied to `.obsidian/plugins/codexian/` automatically when `OBSIDIAN_VAULT` points at a valid vault.
-
-## Codex CLI Setup
-
-Codexian auto-detects `codex` from `PATH`. If Obsidian cannot find it, set the explicit path in Codexian settings.
-
-| Platform | Command | Example path |
-| --- | --- | --- |
-| macOS/Linux | `which codex` | `/Users/you/.local/bin/codex` |
-| Windows native | `where.exe codex` | `C:\Users\you\AppData\Roaming\npm\codex.exe` |
-| Windows WSL | `which codex` inside WSL | `/home/you/.local/bin/codex` |
-
-GUI apps often receive a smaller `PATH` than your terminal. If Codexian shows `spawn codex ENOENT`, either set the CLI path directly or add your Node/Codex bin directory in Settings -> Environment.
-
-## Privacy & Data Use
-
-- **Sent to API**: Your prompts, selected note text, attached files/images, and tool outputs are sent according to your Codex/OpenAI configuration.
-- **Local storage**: Codexian stores plugin settings and session metadata in the vault plugin data area and Codex sessions in the normal Codex CLI session store.
-- **No telemetry**: Codexian does not add analytics or tracking.
-
-## Architecture
+After enabling the plugin, open the Obsidian command palette and run:
 
 ```text
-src/
-├── main.ts                      # Obsidian plugin entry point
-├── app/                         # Shared defaults and plugin-level storage
-├── core/                        # Provider-neutral runtime, registry, storage, tools, prompts
-│   ├── runtime/                 # ChatRuntime interface and approval flow contracts
-│   ├── providers/               # Provider registry, model routing, environment handling
-│   ├── security/                # Approval utilities
-│   └── ...                      # commands, MCP, storage, tool metadata, shared types
-├── providers/
-│   └── codex/                   # Codex app-server adaptor, JSON-RPC transport, JSONL history
-├── features/
-│   ├── chat/                    # Sidebar chat, tabs, renderers, rewind/fork state
-│   ├── inline-edit/             # Inline edit modal and Codex-backed edit service
-│   └── settings/                # Settings UI and provider tabs
-├── shared/                      # Reusable UI components, mention dropdowns, modals
-├── i18n/                        # Locale strings
-├── utils/                       # Cross-cutting utilities
-└── style/                       # Modular CSS compiled to styles.css
+Codexian: 初始化知识库 IDE
 ```
 
-The Codex runtime uses `codex app-server` rather than a plain one-shot shell command. That gives Codexian richer streaming events, approval request handling, resumable threads, skill discovery, subagent metadata, image handling, and JSONL-backed tool rendering.
+This creates:
+
+```text
+00 收件箱/       # inbox, clips, temporary notes
+10 原始资料/     # raw articles, papers, repos, datasets, source images
+20 知识库/       # compiled wiki
+30 输出/         # reports, slides, charts, research outputs
+40 地图/         # home page and maps of content
+90 系统/         # rules, templates, prompts, maintenance reports
+资源/            # images, PDFs, attachments
+.codex/skills/   # vault-local Codex skills
+```
+
+Open `40 地图/Home.md`, then use `/` in Codexian to run:
+
+- `/编译知识库`
+- `/知识库体检`
+- `/生成研究输出`
 
 ## Development
 

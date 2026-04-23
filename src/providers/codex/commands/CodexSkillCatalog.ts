@@ -24,7 +24,7 @@ const CODEX_COMPACT_COMMAND: ProviderCommandEntry = {
   providerId: 'codex',
   kind: 'command',
   name: 'compact',
-  description: 'Compact conversation history',
+  description: '压缩当前对话上下文',
   content: '',
   scope: 'system',
   source: 'builtin',
@@ -64,8 +64,8 @@ function listedSkillToProviderEntry(
     source: 'user',
     isEditable: isVault,
     isDeletable: isVault,
-    displayPrefix: '$',
-    insertPrefix: '$',
+    displayPrefix: '/',
+    insertPrefix: '/',
     ...(isVault
       ? {
           persistenceKey: createCodexSkillPersistenceKey({
@@ -91,6 +91,12 @@ export class CodexSkillCatalog implements ProviderCommandCatalog {
   async listDropdownEntries(context: { includeBuiltIns: boolean }): Promise<ProviderCommandEntry[]> {
     const skills = (await this.listProvider.listSkills())
       .filter(skill => skill.enabled)
+      .filter(skill => {
+        if (skill.scope !== 'repo' || !this.vaultPath) {
+          return false;
+        }
+        return resolveCodexSkillLocationFromPath(skill.path, this.vaultPath) !== null;
+      })
       .sort(compareCodexSkillPriority);
     const entries = skills.map(skill => listedSkillToProviderEntry(skill, this.vaultPath));
     return context.includeBuiltIns ? [CODEX_COMPACT_COMMAND, ...entries] : entries;
@@ -128,8 +134,8 @@ export class CodexSkillCatalog implements ProviderCommandCatalog {
         source: 'user',
         isEditable: true,
         isDeletable: true,
-        displayPrefix: '$',
-        insertPrefix: '$',
+        displayPrefix: '/',
+        insertPrefix: '/',
         persistenceKey: createCodexSkillPersistenceKey({
           rootId: location.rootId,
           currentName: location.name,
@@ -166,9 +172,9 @@ export class CodexSkillCatalog implements ProviderCommandCatalog {
   getDropdownConfig(): ProviderCommandDropdownConfig {
     return {
       providerId: 'codex',
-      triggerChars: ['/', '$'],
+      triggerChars: ['/'],
       builtInPrefix: '/',
-      skillPrefix: '$',
+      skillPrefix: '/',
       commandPrefix: '/',
     };
   }

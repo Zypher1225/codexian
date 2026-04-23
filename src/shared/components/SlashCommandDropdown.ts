@@ -317,7 +317,7 @@ export class SlashCommandDropdown {
 
     if (this.filteredItems.length === 0) {
       const emptyEl = this.dropdownEl.createDiv({ cls: 'claudian-slash-empty' });
-      emptyEl.setText('No matching commands');
+      emptyEl.setText('没有匹配的命令');
     } else {
       for (let i = 0; i < this.filteredItems.length; i++) {
         const item = this.filteredItems[i];

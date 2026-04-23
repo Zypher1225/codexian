@@ -1059,11 +1059,11 @@ describe('ConversationController', () => {
 
   describe('Greeting Time Branches', () => {
     it.each([
-      { name: 'morning (5-12)', hour: 9, day: 1, patterns: ['morning', 'Coffee'] },
-      { name: 'afternoon (12-18)', hour: 14, day: 2, patterns: ['afternoon'] },
-      { name: 'evening (18-22)', hour: 20, day: 3, patterns: ['evening', 'Evening', 'your day'] },
-      { name: 'night owl (22+)', hour: 23, day: 4, patterns: ['night owl', 'Evening'] },
-      { name: 'early morning night owl (0-4)', hour: 2, day: 0, patterns: ['night owl', 'Evening'] },
+      { name: 'morning (5-12)', hour: 9, day: 1, patterns: ['早上好', '知识库'] },
+      { name: 'afternoon (12-18)', hour: 14, day: 2, patterns: ['下午好'] },
+      { name: 'evening (18-22)', hour: 20, day: 3, patterns: ['晚上好', '晚间整理', '沉淀'] },
+      { name: 'night owl (22+)', hour: 23, day: 4, patterns: ['夜间模式', '晚上好'] },
+      { name: 'early morning night owl (0-4)', hour: 2, day: 0, patterns: ['夜间模式', '晚上好'] },
     ])('should include $name greetings', ({ hour, day, patterns }) => {
       jest.spyOn(Date.prototype, 'getHours').mockReturnValue(hour);
       jest.spyOn(Date.prototype, 'getDay').mockReturnValue(day);

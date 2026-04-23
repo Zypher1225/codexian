@@ -2,13 +2,27 @@ import { Modal, Notice, setIcon, Setting } from 'obsidian';
 
 import type { ProviderCommandCatalog } from '../../../core/providers/commands/ProviderCommandCatalog';
 import type { ProviderCommandEntry } from '../../../core/providers/commands/ProviderCommandEntry';
-import { validateCommandName } from '../../../utils/slashCommand';
 import {
   CODEX_SKILL_ROOT_OPTIONS,
   type CodexSkillRootId,
   createCodexSkillPersistenceKey,
   parseCodexSkillPersistenceKey,
 } from '../storage/CodexSkillStorage';
+
+const CODEX_SKILL_NAME_PATTERN = /^[\p{L}\p{N}_-]+$/u;
+
+function validateCodexSkillName(name: string): string | null {
+  if (!name) {
+    return '请填写技能名称';
+  }
+  if (name.length > 64) {
+    return '技能名称不能超过 64 个字符';
+  }
+  if (!CODEX_SKILL_NAME_PATTERN.test(name)) {
+    return '技能名称只能包含中文、字母、数字、下划线和连字符';
+  }
+  return null;
+}
 
 export class CodexSkillModal extends Modal {
   private existing: ProviderCommandEntry | null;
@@ -43,14 +57,14 @@ export class CodexSkillModal extends Modal {
   }
 
   onOpen() {
-    this.setTitle(this.existing ? 'Edit Codex Skill' : 'Add Codex Skill');
+    this.setTitle(this.existing ? '编辑 Codex 技能' : '添加 Codex 技能');
     this.modalEl.addClass('claudian-sp-modal');
 
     const { contentEl } = this;
 
     new Setting(contentEl)
-      .setName('Directory')
-      .setDesc('Where to store the skill')
+      .setName('存放目录')
+      .setDesc('技能保存到当前 vault 的哪个目录')
       .addDropdown(dropdown => {
         for (const opt of CODEX_SKILL_ROOT_OPTIONS) {
           dropdown.addOption(opt.id, opt.label);
@@ -60,36 +74,36 @@ export class CodexSkillModal extends Modal {
       });
 
     new Setting(contentEl)
-      .setName('Skill name')
-      .setDesc('The name used after $ (e.g., "analyze" for $analyze)')
+      .setName('技能名称')
+      .setDesc('聊天框中使用 /名称 触发，例如 /知识库体检')
       .addText(text => {
         this._nameInput = text.inputEl;
         text.setValue(this.existing?.name || '')
-          .setPlaceholder('analyze-code');
+          .setPlaceholder('知识库体检');
       });
 
     new Setting(contentEl)
-      .setName('Description')
-      .setDesc('Optional description shown in dropdown')
+      .setName('描述')
+      .setDesc('显示在命令下拉菜单中的简短说明')
       .addText(text => {
         this._descInput = text.inputEl;
         text.setValue(this.existing?.description || '');
       });
 
     new Setting(contentEl)
-      .setName('Instructions')
-      .setDesc('The skill instructions (SKILL.md content)');
+      .setName('技能指令')
+      .setDesc('写入 SKILL.md 的具体执行规则');
 
     const contentArea = contentEl.createEl('textarea', {
       cls: 'claudian-sp-content-area',
-      attr: { rows: '10', placeholder: 'Analyze the code for...' },
+      attr: { rows: '10', placeholder: '请说明这个技能应该如何读取、处理和写回 vault...' },
     });
     contentArea.value = this.existing?.content || '';
     this._contentArea = contentArea as HTMLTextAreaElement;
 
     const doSave = async () => {
       const name = this._nameInput.value.trim();
-      const nameError = validateCommandName(name);
+      const nameError = validateCodexSkillName(name);
       if (nameError) {
         new Notice(nameError);
         return;
@@ -97,7 +111,7 @@ export class CodexSkillModal extends Modal {
 
       const content = this._contentArea.value;
       if (!content.trim()) {
-        new Notice('Instructions are required');
+        new Notice('请填写技能指令');
         return;
       }
 
@@ -112,8 +126,8 @@ export class CodexSkillModal extends Modal {
         source: 'user',
         isEditable: true,
         isDeletable: true,
-        displayPrefix: '$',
-        insertPrefix: '$',
+        displayPrefix: '/',
+        insertPrefix: '/',
         persistenceKey: createCodexSkillPersistenceKey({
           rootId: this._selectedRootId,
           ...(this.existing?.name ? { currentName: this.existing.name } : {}),
@@ -123,7 +137,7 @@ export class CodexSkillModal extends Modal {
       try {
         await this.onSave(entry);
       } catch {
-        new Notice('Failed to save Codex skill');
+        new Notice('保存 Codex 技能失败');
         return;
       }
       this.close();
@@ -133,13 +147,13 @@ export class CodexSkillModal extends Modal {
     const buttonContainer = contentEl.createDiv({ cls: 'claudian-sp-modal-buttons' });
 
     const cancelBtn = buttonContainer.createEl('button', {
-      text: 'Cancel',
+      text: '取消',
       cls: 'claudian-cancel-btn',
     });
     cancelBtn.addEventListener('click', () => this.close());
 
     const saveBtn = buttonContainer.createEl('button', {
-      text: 'Save',
+      text: '保存',
       cls: 'claudian-save-btn',
     });
     saveBtn.addEventListener('click', doSave);
@@ -183,26 +197,26 @@ export class CodexSkillSettings {
     }
 
     const headerEl = this.containerEl.createDiv({ cls: 'claudian-sp-header' });
-    headerEl.createSpan({ text: 'Codex Skills', cls: 'claudian-sp-label' });
+    headerEl.createSpan({ text: 'Codex 技能', cls: 'claudian-sp-label' });
 
     const actionsEl = headerEl.createDiv({ cls: 'claudian-sp-header-actions' });
     const refreshBtn = actionsEl.createEl('button', {
       cls: 'claudian-settings-action-btn',
-      attr: { 'aria-label': 'Refresh' },
+      attr: { 'aria-label': '刷新' },
     });
     setIcon(refreshBtn, 'refresh-cw');
     refreshBtn.addEventListener('click', () => { void this.refresh(); });
 
     const addBtn = actionsEl.createEl('button', {
       cls: 'claudian-settings-action-btn',
-      attr: { 'aria-label': 'Add' },
+      attr: { 'aria-label': '添加' },
     });
     setIcon(addBtn, 'plus');
     addBtn.addEventListener('click', () => this.openModal(null));
 
     if (this.entries.length === 0) {
       const emptyEl = this.containerEl.createDiv({ cls: 'claudian-sp-empty-state' });
-      emptyEl.setText('No Codex skills in vault. Click + to create one.');
+      emptyEl.setText('当前 vault 还没有 Codex 技能。点击 + 创建一个。');
       return;
     }
 
@@ -218,8 +232,8 @@ export class CodexSkillSettings {
 
     const headerRow = infoEl.createDiv({ cls: 'claudian-sp-item-header' });
     const nameEl = headerRow.createSpan({ cls: 'claudian-sp-item-name' });
-    nameEl.setText(`$${entry.name}`);
-    headerRow.createSpan({ text: 'skill', cls: 'claudian-slash-item-badge' });
+    nameEl.setText(`/${entry.name}`);
+    headerRow.createSpan({ text: '技能', cls: 'claudian-slash-item-badge' });
 
     if (entry.description) {
       const descEl = infoEl.createDiv({ cls: 'claudian-sp-item-desc' });
@@ -231,7 +245,7 @@ export class CodexSkillSettings {
     if (entry.isEditable) {
       const editBtn = actionsEl.createEl('button', {
         cls: 'claudian-settings-action-btn',
-        attr: { 'aria-label': 'Edit' },
+        attr: { 'aria-label': '编辑' },
       });
       setIcon(editBtn, 'pencil');
       editBtn.addEventListener('click', () => this.openModal(entry));
@@ -240,15 +254,15 @@ export class CodexSkillSettings {
     if (entry.isDeletable) {
       const deleteBtn = actionsEl.createEl('button', {
         cls: 'claudian-settings-action-btn claudian-settings-delete-btn',
-        attr: { 'aria-label': 'Delete' },
+        attr: { 'aria-label': '删除' },
       });
       setIcon(deleteBtn, 'trash-2');
       deleteBtn.addEventListener('click', async () => {
         try {
           await this.deleteEntry(entry);
-          new Notice(`Codex skill "$${entry.name}" deleted`);
+          new Notice(`已删除 Codex 技能“/${entry.name}”`);
         } catch {
-          new Notice('Failed to delete Codex skill');
+          new Notice('删除 Codex 技能失败');
         }
       });
     }
@@ -263,7 +277,7 @@ export class CodexSkillSettings {
       async (entry) => {
         await this.catalog.saveVaultEntry(entry);
         await this.render();
-        new Notice(`Codex skill "$${entry.name}" ${existing ? 'updated' : 'created'}`);
+        new Notice(`Codex 技能“/${entry.name}”已${existing ? '更新' : '创建'}`);
       }
     );
     modal.open();

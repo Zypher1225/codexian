@@ -73,7 +73,7 @@ describe('CodexSkillCatalog', () => {
 
       const entries = await catalog.listDropdownEntries({ includeBuiltIns: false });
 
-      expect(entries).toHaveLength(2);
+      expect(entries).toHaveLength(1);
       expect(entries.some(e => e.name === 'compact')).toBe(false);
 
       const vaultEntry = entries.find(e => e.name === 'my-skill');
@@ -81,8 +81,8 @@ describe('CodexSkillCatalog', () => {
       expect(vaultEntry!.providerId).toBe('codex');
       expect(vaultEntry!.kind).toBe('skill');
       expect(vaultEntry!.scope).toBe('vault');
-      expect(vaultEntry!.displayPrefix).toBe('$');
-      expect(vaultEntry!.insertPrefix).toBe('$');
+      expect(vaultEntry!.displayPrefix).toBe('/');
+      expect(vaultEntry!.insertPrefix).toBe('/');
       expect(vaultEntry!.source).toBe('user');
       expect(vaultEntry!.content).toBe('');
       expect(vaultEntry!.persistenceKey).toBe(
@@ -93,12 +93,7 @@ describe('CodexSkillCatalog', () => {
       );
       expect(vaultEntry!.id).toBe('codex-skill-vault-codex-my-skill');
 
-      const homeEntry = entries.find(e => e.name === 'home-skill');
-      expect(homeEntry).toBeDefined();
-      expect(homeEntry!.scope).toBe('user');
-      expect(homeEntry!.isEditable).toBe(false);
-      expect(homeEntry!.isDeletable).toBe(false);
-      expect(homeEntry!.persistenceKey).toBeUndefined();
+      expect(entries.find(e => e.name === 'home-skill')).toBeUndefined();
     });
 
     it('omits disabled skills from dropdown entries', async () => {
@@ -329,16 +324,16 @@ Prompt`,
   });
 
   describe('getDropdownConfig', () => {
-    it('returns Codex-specific config with $ for skills', () => {
+    it('returns Codex-specific config with / for skills', () => {
       const adapter = createMockAdapter({});
       const storage = new CodexSkillStorage(adapter);
       const catalog = new CodexSkillCatalog(storage, createMockSkillListProvider(), '/test/vault');
 
       const config = catalog.getDropdownConfig();
 
-      expect(config.triggerChars).toEqual(['/', '$']);
+      expect(config.triggerChars).toEqual(['/']);
       expect(config.builtInPrefix).toBe('/');
-      expect(config.skillPrefix).toBe('$');
+      expect(config.skillPrefix).toBe('/');
       expect(config.commandPrefix).toBe('/');
     });
   });

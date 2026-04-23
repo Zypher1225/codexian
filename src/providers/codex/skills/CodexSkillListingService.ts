@@ -49,7 +49,7 @@ export function compareCodexSkillPriority(
 }
 
 export function extractExplicitCodexSkillNames(text: string): string[] {
-  const matches = text.matchAll(/(^|\s)\$([A-Za-z0-9_-]+)/g);
+  const matches = text.matchAll(/(^|\s)\$([\p{L}\p{N}_-]+)/gu);
   const names: string[] = [];
   const seen = new Set<string>();
 

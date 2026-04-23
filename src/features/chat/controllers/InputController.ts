@@ -62,6 +62,13 @@ const DEFAULT_APPROVAL_DECISION_OPTIONS: ApprovalDecisionOption[] =
     decision,
   }));
 
+function normalizeCodexSlashSkillText(text: string): string {
+  if (/^\/compact(\s|$)/i.test(text)) {
+    return text;
+  }
+  return text.replace(/^\/([\p{L}\p{N}_-]+)(?=\s|$)/u, '$$$1');
+}
+
 export interface InputControllerDeps {
   plugin: ClaudianPlugin;
   state: ChatState;
@@ -648,9 +655,12 @@ export class InputController {
 
     const externalContextPaths = externalContextSelector?.getExternalContexts();
     const isCompact = /^\/compact(\s|$)/i.test(options.content);
-    const transformedText = !isCompact && fileContextManager
-      ? fileContextManager.transformContextMentions(options.content)
+    const providerText = this.getActiveProviderId() === 'codex'
+      ? normalizeCodexSlashSkillText(options.content)
       : options.content;
+    const transformedText = !isCompact && fileContextManager
+      ? fileContextManager.transformContextMentions(providerText)
+      : providerText;
     const enabledMcpServers = mcpServerSelector?.getEnabledServers();
 
     return {

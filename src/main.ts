@@ -34,6 +34,7 @@ import type { EnvironmentScope } from './core/types/settings';
 import { ClaudianView } from './features/chat/ClaudianView';
 import { type InlineEditContext, InlineEditModal } from './features/inline-edit/ui/InlineEditModal';
 import { ClaudianSettingTab } from './features/settings/ClaudianSettings';
+import { initializeKnowledgeBaseVault } from './features/vault-init/knowledgeBaseInitializer';
 import { setLocale } from './i18n/i18n';
 import type { Locale } from './i18n/types';
 import { buildCursorContext } from './utils/editor';
@@ -69,6 +70,23 @@ export default class ClaudianPlugin extends Plugin {
       name: 'Open Codexian',
       callback: () => {
         this.activateView();
+      },
+    });
+
+    this.addCommand({
+      id: 'initialize-knowledge-base',
+      name: '初始化知识库 IDE',
+      callback: async () => {
+        try {
+          const result = await initializeKnowledgeBaseVault(this.app);
+          new Notice(
+            `Codexian 初始化完成：创建 ${result.createdFolders} 个目录、${result.createdFiles} 个文件，跳过 ${result.skippedFiles} 个已有文件。`,
+            8000,
+          );
+        } catch (error) {
+          const message = error instanceof Error ? error.message : String(error);
+          new Notice(`Codexian 初始化失败：${message}`, 8000);
+        }
       },
     });
 

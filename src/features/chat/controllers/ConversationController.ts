@@ -790,37 +790,36 @@ export class ConversationController {
 
     // Day-specific greetings (some personalized, some universal)
     const dayGreetings: Record<number, string[]> = {
-      0: [personalize('Happy Sunday'), 'Sunday session?', 'Welcome to the weekend'],
-      1: [personalize('Happy Monday'), personalize('Back at it', 'Back at it!')],
-      2: [personalize('Happy Tuesday')],
-      3: [personalize('Happy Wednesday')],
-      4: [personalize('Happy Thursday')],
-      5: [personalize('Happy Friday'), personalize('That Friday feeling')],
-      6: [personalize('Happy Saturday', 'Happy Saturday!'), personalize('Welcome to the weekend')],
+      0: [personalize('周日好'), '周日也可以整理知识库', '周末好'],
+      1: [personalize('周一好'), personalize('开始新一周', '开始新一周吧')],
+      2: [personalize('周二好')],
+      3: [personalize('周三好')],
+      4: [personalize('周四好')],
+      5: [personalize('周五好'), personalize('周五适合做一次知识库回顾')],
+      6: [personalize('周六好', '周六好'), personalize('周末好')],
     };
 
     // Time-specific greetings
     const getTimeGreetings = (): string[] => {
       if (hour >= 5 && hour < 12) {
-        return [personalize('Good morning'), 'Coffee and Claudian time?'];
+        return [personalize('早上好'), '要不要整理一下知识库？'];
       } else if (hour >= 12 && hour < 18) {
-        return [personalize('Good afternoon'), personalize('Hey there'), personalize("How's it going") + '?'];
+        return [personalize('下午好'), personalize('你好'), personalize('现在想处理什么') + '？'];
       } else if (hour >= 18 && hour < 22) {
-        return [personalize('Good evening'), personalize('Evening'), personalize('How was your day') + '?'];
+        return [personalize('晚上好'), personalize('晚间整理时间'), personalize('今天有什么要沉淀') + '？'];
       } else {
-        return ['Hello, night owl', personalize('Evening')];
+        return ['夜间模式开启', personalize('晚上好')];
       }
     };
 
     // General greetings
     const generalGreetings = [
-      personalize('Hey there'),
-      name ? `Hi ${name}, how are you?` : 'Hi, how are you?',
-      personalize("How's it going") + '?',
-      personalize('Welcome back') + '!',
-      personalize("What's new") + '?',
-      ...(name ? [`${name} returns!`] : []),
-      'You are absolutely right!',
+      personalize('你好'),
+      name ? `${name}，今天处理什么？` : '今天处理什么？',
+      personalize('欢迎回来') + '！',
+      personalize('有什么新材料要整理') + '？',
+      ...(name ? [`${name}，继续维护知识库吧`] : []),
+      '可以开始了',
     ];
 
     // Combine day + time + general greetings, pick randomly
