@@ -35,6 +35,7 @@ import {
   deriveCodexSessionsRootFromSessionPath,
   findCodexSessionFile,
 } from '../history/CodexHistoryStore';
+import { codexModelSupportsFastServiceTier } from '../modelOptions';
 import { encodeCodexTurn } from '../prompt/encodeCodexTurn';
 import { type CodexSafeMode, getCodexProviderSettings } from '../settings';
 import {
@@ -85,7 +86,7 @@ function resolveCodexSandboxConfig(
 }
 
 function resolveCodexServiceTier(serviceTier: unknown, model: string | undefined): string | null {
-  if (model !== 'gpt-5.4') {
+  if (!codexModelSupportsFastServiceTier(model)) {
     return null;
   }
   return serviceTier === 'fast' ? 'fast' : null;

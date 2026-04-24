@@ -1,6 +1,6 @@
 {
   "name": "codexian",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Codexian - local Codex CLI embedded in an Obsidian sidebar",
   "main": "main.js",
   "scripts": {
